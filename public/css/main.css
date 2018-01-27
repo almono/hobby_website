@@ -1,0 +1,158 @@
+html, body {
+    box-sizing: border-box;
+    background-color: #c1d1e1; <!-- c1d1e1 -->
+    color: #636b6f;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    height: 100%;
+    min-height: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    background-color: #21064C;
+    padding: 20px;
+    bottom: 0px;
+}
+#myNavbar {
+    padding-left: 0px;
+    height: 20px !important;
+}
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.navbar {
+    border: 0px !important;
+    min-height: 40px !important;
+}
+.navbar a {
+    color: #CEBCED !important;
+    font-weight: bold;
+}
+.navbar li:hover {
+    text-decoration: underline;
+}
+.nav > li > a {
+    padding: 0px 20px 0px 10px;
+}
+.navbar-contener {
+    width: 100%;
+    z-index: 9999;
+    position: fixed;
+    height: 90px;
+}
+.footer h4 {
+    font-weight: bold;
+    color: #CEBCED;
+}
+.footer li {
+    list-style: none;
+    color: #CEBCED;
+    font-family: initial;
+}
+.open li {
+    font-style: oblique;
+}
+.login {
+    margin-bottom:5px;
+}
+.custom-form {
+    background-color: #d3e1c1 !important;
+    border-color: #85bc6a;
+    width: 400px !important;
+}
+.custom-form form div {
+    margin: 10px;
+}
+.fa-2x {
+    vertical-align: middle;
+}
+.dropdown-menu {
+    background-color: #21064C !important;
+    width: 100%;
+    margin-top: -3px;
+    border-color: #8559CC;
+    border-radius: 5px;
+}
+.dropdown-menu > li{
+    color: whitesmoke;
+    font-weight: bold;
+    font-style: normal;
+}
+.dropdown-menu > li:hover {
+    background-color: #21064C !important;
+    text-decoration: underline;
+    font-weight: bold !important;
+}
+.dropdown-menu > li > a {
+    color: #CEBCED !important;
+}
+.dropdown-menu > li > #login_button {
+    color: #CEBCED;
+    width: 70%;
+    background-color: #3104B4;
+    border: #CEBCED solid 1px;
+    margin: auto;
+}
+.dropdown-menu > li > #login_button:hover {
+    background-color: #4e219e !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.dropdown-menu > li > a:hover {
+    background-color: #21064C !important;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.dropdown-menu > li > a:focus {
+    font-style: normal !important;
+    text-decoration: none !important;
+}
+
+
+
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in {
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+}
