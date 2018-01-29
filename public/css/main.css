@@ -39,24 +39,16 @@ footer {
 }
 .navbar li:hover {
     text-decoration: underline;
+    color: brown;
 }
 .nav > li > a {
-    padding: 0px 20px 0px 10px;
+    padding: 0px 10px 0px 10px;
 }
 .navbar-contener {
     width: 100%;
     z-index: 9999;
     position: fixed;
     height: 90px;
-}
-.footer h4 {
-    font-weight: bold;
-    color: #CEBCED;
-}
-.footer li {
-    list-style: none;
-    color: #CEBCED;
-    font-family: initial;
 }
 .open li {
     font-style: oblique;
@@ -65,9 +57,8 @@ footer {
     margin-bottom:5px;
 }
 .custom-form {
-    background-color: #d3e1c1 !important;
-    border-color: #85bc6a;
-    width: 400px !important;
+    background-color: brown !important;
+    border-color: #1c1313;
 }
 .custom-form form div {
     margin: 10px;
@@ -76,14 +67,14 @@ footer {
     vertical-align: middle;
 }
 .dropdown-menu {
-    background-color: #21064C !important;
+    background-color: #1c1313 !important;
     width: 100%;
     margin-top: -3px;
-    border-color: #8559CC;
-    border-radius: 5px;
+    border-color: #251b01;
+    border-top: #251b01 3px solid;
 }
 .dropdown-menu > li{
-    color: whitesmoke;
+    color: brown;
     font-weight: bold;
     font-style: normal;
 }
@@ -92,20 +83,9 @@ footer {
     text-decoration: underline;
     font-weight: bold !important;
 }
-.dropdown-menu > li > a {
-    color: #CEBCED !important;
-}
-.dropdown-menu > li > #login_button {
-    color: #CEBCED;
-    width: 70%;
-    background-color: #3104B4;
-    border: #CEBCED solid 1px;
-    margin: auto;
-}
-.dropdown-menu > li > #login_button:hover {
-    background-color: #4e219e !important;
-    font-weight: bold;
-    text-decoration: underline;
+.dropdown-menu > li > a, a:hover, a:focus {
+    background: inherit !important;
+    color: brown !important;
 }
 .dropdown-menu > li > a:hover {
     background-color: #21064C !important;
@@ -116,7 +96,17 @@ footer {
     font-style: normal !important;
     text-decoration: none !important;
 }
-
+.nav .open > a {
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px !important;
+}
+.nav .open > a:hover {
+    background: inherit !important;
+}
+.nav .open > a, .nav .open > a:focus {
+    background: #1c1313 !important;
+    border-bottom: 0px;
+}
 
 
 @media (max-width: 991px) {

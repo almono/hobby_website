@@ -19,25 +19,19 @@
     <script type="text/javascript" src="{{URL::asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('js/main.js')}}"></script>
 
-    <title>Utargowo</title>
+    <title>Hobby</title>
 </head>
-<body style="background-color: #e8daef; height: 100%; min-height: 100%;">
+<body style="background: linear-gradient(to right, #251b01,#3e2e06,#251b01); height: 100%; min-height: 100%;">
 
-<div class="container-fluid navbar-contener" style="background-color: #21064C; ">
+<div class="container" style="background: linear-gradient(#3e2e06, #251b01 90%); border-radius: 0px 0px 15px 15px; margin-bottom: 15px; border: 4px  solid #1c1313; border-top: 0px;">
     @include('front.navbar')
 </div>
 
-<div class="container-fluid" style="padding-top: 120px; background-color: #d8c1e1; position: relative; min-height: 80%; padding-bottom: 30px;">
-    <div class="col-xs-12">
+<div class="container" style="position: relative; padding-bottom: 30px; border: 4px  solid #1c1313; border-radius: 15px; min-height: 75%;">
+    <div class="col-xs-12" style="">
         @yield('content')
     </div>
 </div>
-<div id="flash">
-    @include('flash::message')
-</div>
-<footer class="container-fluid" style="min-height: 20%; bottom: 0px;">
-    @include('front.footer')
-</footer>
 
 </body>
 </html>

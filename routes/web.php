@@ -28,3 +28,6 @@ Route::post('/register',['uses' => 'UserController@create', 'as' => 'register'])
 
 Route::get('/my_account',['uses' => 'UserController@my_account', 'as' => 'my_account']);
 Route::get('/profile/{id?}',['uses' => 'MainpageController@login_form', 'as' => 'login_form']);
+
+Route::get('/admin_login', ['uses' => 'UserController@admin_login', 'as' => 'admin_login']);
+Route::get('/admin', ['uses' => 'UserController@admin_panel', 'as' => 'admin_panel']);

@@ -15,7 +15,7 @@ class MainpageController extends Controller
 
     public function login_form() {
         flash('You are now logged in!');
-        return view('auth.login');
+        return redirect('/admin');
     }
 
     public function register_form() {

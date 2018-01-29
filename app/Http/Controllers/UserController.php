@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Item;
+use App\Category;
 use Session;
 use Validator;
 
@@ -43,6 +45,26 @@ class UserController extends Controller
 
         return view('front.my_account',['user' => $user]);
 
+    }
+
+    public function admin_login() {
+        if (Auth::check()) {
+            return redirect('/admin');
+        }
+        else {
+            return view('front.admin_login');
+        }
+    }
+
+    public function admin_panel() {
+        if (!Auth::check()) {
+            return redirect('/admin_login');
+        }
+        else {
+            $categories = Category::get();
+            $items = Item::get();
+            return view('front.admin',['categories' => $categories, 'items' => $items]);
+        }
     }
 
 }
