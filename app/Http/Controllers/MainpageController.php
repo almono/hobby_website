@@ -29,7 +29,7 @@ class MainpageController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // Authentication passed...
             flash()->success("Zalogowano poprawnie :)");
-            return redirect()->route('home');
+            return redirect()->route('admin_panel');
         }
         else {
             flash()->warning("Błąd logowania :( Sprawdź login i hasło");

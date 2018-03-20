@@ -107,8 +107,27 @@ footer {
     background: #1c1313 !important;
     border-bottom: 0px;
 }
-
-
+.admin_input {
+    background-color: black;
+    color: white;
+}
+.admin_span {
+    width: 25% !important;
+}
+.admin-text {
+    color: white;
+}
+.form_margin {
+    margin-bottom: 20px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+input[type=file] {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 95%;
+}
 @media (max-width: 991px) {
     .navbar-header {
         float: none;

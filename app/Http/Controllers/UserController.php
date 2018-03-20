@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Item;
 use App\Category;
+use Mockery\Exception;
 use Session;
 use Validator;
+use File;
 
 class UserController extends Controller
 {
@@ -65,6 +67,104 @@ class UserController extends Controller
             $items = Item::get();
             return view('front.admin',['categories' => $categories, 'items' => $items]);
         }
+    }
+
+    public function new_item_view() {
+        if (Auth::check()) {
+            $categories = Category::get(); //dd($categories);
+            return view('front.admin_add_item', ['categories' => $categories]);
+        }
+        else {
+            return redirect('home');
+        }
+    }
+
+    public function create_new_item(Request $request) {
+        try {
+            //dd($request->file('zdjecie_przod'));
+            //dd(2);
+            $params = $request->all();
+            Item::NewItem($params);
+            flash()->success('Nowy przedmiot został stworzony!');
+        }
+        catch (exception $e) {
+            dd($e);
+            flash()->warning('Nie udało się stworzyć nowego przedmiotu :(');
+        }
+
+        return back();
+
+    }
+
+    public function new_category_view() {
+        if (Auth::check()) {
+            return view('front.admin_add_category');
+        }
+        else {
+            return redirect('home');
+        }
+    }
+
+    public function create_new_category(Request $request) {
+        try {
+            $params = $request->all();
+            Category::NewCategory($params);
+            flash()->success('Nowa kategoria została stworzona!');
+        }
+        catch (exception $e){
+            dd($e);
+            flash()->warning('Nie udało się stworzyć nowej kategorii :(');
+        }
+
+        return back();
+
+    }
+
+    public function view_items() {
+        $items = Item::GetItems();
+        return view('front.admin_view_items', ['items' => $items]);
+    }
+
+    public function delete_item($id) {
+        $item = Item::find($id);
+        try {
+            $item->delete();
+        }
+        catch (exception $e) {
+            flash()->warning('Wystąpił błąd podczas usuwania!');
+        }
+
+        return back();
+    }
+
+    public function edit_item($id) {
+        $item = Item::where('id',$id)->with('category')->firstOrFail(); //dd(File::exists(storage_path() . "\zdjecia\\" . "test-1000-2.jpg"));
+        $categories = Category::get();
+        return view('front.admin_edit_item',['item' => $item, 'categories' => $categories]);
+    }
+
+    public function update_item(Request $request) {
+
+        $input = $request->all();
+        $item = Item::findorFail($input['id']);
+
+        if (isset($input['new_name']) && $input['new_name'] != '') {
+            $item->name = $input['new_name'];
+        }
+        if (isset($input['new_year']) && $input['new_year'] != '') {
+            $item->year = $input['new_year'];
+        }
+        $item->category_id = $input['kategoria'];
+
+        try {
+            $item->save();
+        }
+        catch (Exception $e){
+            flash()->warning('Wystąpił błąd podczas zapisu :( ');
+        }
+
+        flash()->success('Przedmiot zmodyfikowano pomyślnie!');
+        return redirect()->route('admin_show_items');
     }
 
 }
