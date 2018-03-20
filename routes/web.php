@@ -23,11 +23,6 @@ Route::get('logout', function() {
 
 Route::get('/login',['uses' => 'MainpageController@login_form', 'as' => 'login_form']);
 Route::post('/login',['uses' => 'MainpageController@login', 'as' => 'login']);
-Route::get('/register',['uses' => 'MainpageController@register_form', 'as' => 'register_form']);
-Route::post('/register',['uses' => 'UserController@create', 'as' => 'register']);
-
-Route::get('/my_account',['uses' => 'UserController@my_account', 'as' => 'my_account']);
-Route::get('/profile/{id?}',['uses' => 'MainpageController@login_form', 'as' => 'login_form']);
 
 Route::get('/admin_login', ['uses' => 'UserController@admin_login', 'as' => 'admin_login']);
 Route::get('/admin', ['uses' => 'UserController@admin_panel', 'as' => 'admin_panel']);
@@ -43,3 +38,5 @@ Route::get('/admin/lista', ['uses' => 'UserController@view_items', 'as' => 'admi
 Route::post('/admin/usun/{id}', ['uses' => 'UserController@delete_item', 'as' => 'delete_item']);
 Route::post('/admin/edytuj/{id}', ['uses' => 'UserController@edit_item', 'as' => 'edit_item']);
 Route::post('/admin/edit/{id}', ['uses' => 'UserController@update_item', 'as' => 'update_item']);
+
+Route::get('/category/{id}', ['uses' => 'ItemController@show_items', 'as' => 'show_items']);

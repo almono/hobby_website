@@ -13,16 +13,10 @@
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar" style="float: left">
                             <ul class="nav navbar-nav navbar" style="display: flex; align-items: center;">
-                                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="caret"></span>Kalendarzyki polskie</a>
-                                    <div class="dropdown-menu custom-form" style="padding: 15px; padding-bottom: 10px; text-align:center;">
-                                        <h4 style="font-weight: bold; margin-top: 0; border: 2px solid black; border-radius: 25px; border-color: #85bc6a; padding: 10px;">Registration form</h4>
-                                    </div>
-                                </li>
-                                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="caret"></span>Kalendarzyki zagraniczne</a>
-                                    <div class="dropdown-menu custom-form" style="padding: 15px; padding-bottom: 10px; text-align:center;">
-                                        <h4 style="font-weight: bold; margin-top: 0; border: 2px solid black; border-radius: 25px; border-color: #85bc6a; padding: 10px;">Login form</h4>
-                                    </div>
-                                </li>
+                                <a href="{{ route('show_items', ['category_id' => 1]) }}" >Kalendarzyki polskie</a>
+
+                                <a href="{{ route('show_items', ['category_id' => 2]) }}" style="margin-left: 20px;">Kalendarzyki zagraniczne</a>
+
                             </ul>
                         </div>
                         <div style="float: right;">
