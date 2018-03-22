@@ -21,13 +21,13 @@
 
     <title>Hobby</title>
 </head>
-<body style="background: linear-gradient(to right, #251b01,#8a733b,#251b01); height: 100%; min-height: 100%;">
+<body style="background: linear-gradient(to right, #251b01,#8a733b,#251b01);">
 
 <div class="container" style="background: linear-gradient(#3e2e06, #251b01 90%); border-radius: 0px 0px 15px 15px; margin-bottom: 15px; border: 4px  solid #1c1313; border-top: 0px;">
     @include('front.navbar')
 </div>
 
-<div class="container" style="position: relative; padding-bottom: 30px; border: 4px  solid #1c1313; border-radius: 15px; min-height: 75%;">
+<div class="container" style="position: relative; padding-bottom: 30px; border: 4px  solid #1c1313; border-radius: 15px;">
     <div class="col-xs-12" style="">
         @yield('content')
     </div>
