@@ -85,7 +85,7 @@ footer {
 }
 .dropdown-menu > li > a, a:hover, a:focus {
     background: inherit !important;
-    color: brown !important;
+    color: brown;
 }
 .dropdown-menu > li > a:hover {
     background-color: #21064C !important;
@@ -135,7 +135,7 @@ input[type=file] {
     padding-top: 10px;
     max-height: 300px;
 }
-
+/*
 .item-div > img {
     height: 200px;
     width: 100%;
@@ -147,11 +147,73 @@ input[type=file] {
     transform: scale(1.1);
     z-index: 101;
 }
-
+*/
 .item-name {
     border-top: 1px black solid;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+    perspective: 1000px;
+}
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+}
+
+/* flip speed goes here */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+    position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+    backface-visibility: hidden;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+}
+
+.front > img {
+    height: 100%;
+    padding: 0px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.back > img {
+    height: 100%;
+    padding: 0px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.pagination > .active > span {
+    background-color: #59422c !important;
+    border: 1px solid #d1d13c !important;
+}
+
+.pagination > li > a:hover {
+    background-color: #8e6d2c !important;
+    color: #890000;
 }
 
 @media (max-width: 991px) {
