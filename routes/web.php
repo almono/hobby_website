@@ -33,7 +33,8 @@ Route::post('/admin/dodaj_przedmiot' , ['uses' => 'UserController@create_new_ite
 Route::get('/admin/dodaj_kategorie', ['uses' => 'UserController@new_category_view', 'as' => 'admin_new_category']);
 Route::post('/admin/dodaj_kategorie', ['uses' => 'UserController@create_new_category', 'as' => 'admin_add_new_category']);
 
-Route::get('/admin/lista', ['uses' => 'UserController@view_items', 'as' => 'admin_show_items']);
+//Route::post('/admin/lista', ['uses' => 'UserController@view_items', 'as' => 'admin_show_items']);
+Route::get('/admin/lista', ['uses' => 'ItemController@admin_show_items', 'as' => 'admin_show_items']);
 
 Route::post('/admin/usun/{id}', ['uses' => 'UserController@delete_item', 'as' => 'delete_item']);
 Route::post('/admin/edytuj/{id}', ['uses' => 'UserController@edit_item', 'as' => 'edit_item']);

@@ -48,4 +48,34 @@ class Item extends Model
     }
 
 
+    public static function scopeByFilter($query, $sort) {
+
+        if($sort) {
+            $query->orderBy('name',$sort[1]);
+        }
+
+        return $query;
+
+    }
+
+    public static function scopeCustomYear($query, $sort) {
+
+        if($sort) {
+            $query->where('year',$sort);
+        }
+
+        return $query;
+
+    }
+
+    public static function scopeCustomTown($query, $sort) {
+
+        if($sort) {
+            $query->where('name','like',$sort);
+        }
+
+        return $query;
+
+    }
+
 }
