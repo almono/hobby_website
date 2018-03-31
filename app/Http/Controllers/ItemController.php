@@ -45,15 +45,19 @@ class ItemController extends Controller
 
     public function admin_show_items()
     {
-        $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->paginate(6);
+        $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->paginate(9);
 
         return view('front.admin_view_items',['items' => $items]);
     }
 
-    public function show_items()
+    public function show_items($category = null)
     {
-
-        $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->paginate(6);
+        if ($category != null) {
+            $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->where('category_id','=',$category)->paginate(9);
+        }
+        else {
+            $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->paginate(9);
+        }
 
         return view('front.offer_list',['items' => $items]);
     }

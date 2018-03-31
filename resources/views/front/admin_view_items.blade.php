@@ -32,8 +32,8 @@
                     <b class="col-xs-2 admin-text">Rocznik</b>
                     <b class="col-xs-2 admin-text">Kategoria</b>
                     <div style="margin-top: 40px;">
-                        <img class="col-xs-2" src="{{ asset("img/$item->img_front")}}" alt="front" style="margin-bottom: 5px;">
-                        <img class="col-xs-2" src="{{ asset("img/$item->img_back")}}" alt="front" style="margin-bottom: 5px;">
+                        <img class="col-xs-2 view_item_img" src="{{ asset("img/$item->img_front")}}" alt="front" style="margin-bottom: 5px;">
+                        <img class="col-xs-2 view_item_img" src="{{ asset("img/$item->img_back")}}" alt="front" style="margin-bottom: 5px;">
                         <span class="col-xs-2 admin-text" style="margin-top: 50px;">{{$item->name}}</span>
                         <span class="col-xs-2 admin-text" style="margin-top: 50px;">{{$item->year}}</span>
                         <span class="col-xs-2 admin-text" style="margin-top: 50px;">{{$item->category->name}}</span>

@@ -41,6 +41,9 @@
             <div class="col-xs-12" style="margin-top: 15px">
                 <a href="{{route('admin_show_items')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Wyświetl przedmioty</a>
             </div>
+            <div class="col-xs-12" style="margin-top: 15px">
+                <a href="{{route('admin_show_categories')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Wyświetl kategorie</a>
+            </div>
         </div>
         <div class="col-xs-10" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-right: none">
             @yield('admin_content')

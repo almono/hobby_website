@@ -34,10 +34,14 @@ Route::get('/admin/dodaj_kategorie', ['uses' => 'UserController@new_category_vie
 Route::post('/admin/dodaj_kategorie', ['uses' => 'UserController@create_new_category', 'as' => 'admin_add_new_category']);
 
 //Route::post('/admin/lista', ['uses' => 'UserController@view_items', 'as' => 'admin_show_items']);
-Route::get('/admin/lista', ['uses' => 'ItemController@admin_show_items', 'as' => 'admin_show_items']);
+Route::get('/admin/przedmioty_lista', ['uses' => 'ItemController@admin_show_items', 'as' => 'admin_show_items']);
+Route::get('/admin/kategorie_lista', ['uses' => 'CategoryController@admin_show_categories', 'as' => 'admin_show_categories']);
 
 Route::post('/admin/usun/{id}', ['uses' => 'UserController@delete_item', 'as' => 'delete_item']);
-Route::post('/admin/edytuj/{id}', ['uses' => 'UserController@edit_item', 'as' => 'edit_item']);
-Route::post('/admin/edit/{id}', ['uses' => 'UserController@update_item', 'as' => 'update_item']);
+Route::post('/admin/edytuj_przedmiot/{id}', ['uses' => 'UserController@edit_item', 'as' => 'edit_item']);
+Route::post('/admin/edit_item/{id}', ['uses' => 'UserController@update_item', 'as' => 'update_item']);
+
+Route::post('/admin/edytuj_kategorie/{id}', ['uses' => 'CategoryController@edit_category', 'as' => 'edit_category']);
+Route::post('/admin/edit_category/{id}', ['uses' => 'CategoryController@update_category', 'as' => 'update_category']);
 
 Route::get('/category/{id}', ['uses' => 'ItemController@show_items', 'as' => 'show_items']);

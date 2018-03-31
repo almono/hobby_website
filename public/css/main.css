@@ -210,6 +210,10 @@ input[type=file] {
     background-color: #8e6d2c !important;
     color: #890000;
 }
+.view_item_img {
+    height: 160px !important;
+    max-width: 250px !important;
+}
 
 @media (max-width: 991px) {
     .navbar-header {
