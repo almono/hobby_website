@@ -30,7 +30,7 @@ class ItemController extends Controller
         //Czy istnieje get z zabezpieczeniem
         if (Request::has('sort') && (Request::get('sort') == 'nazwa-asc' || Request::get('sort') == 'nazwa-desc' || Request::get('sort') == 'rocznik-asc' || Request::get('sort') == 'rocznik-desc')) {
             $sort = str_replace("nazwa", "name", Request::get('sort'));
-            $sort = str_replace("rocznik", "year", $sort);
+            $sort = str_replace("rocznik", "year", Request::get('sort'));
             $this->sort = explode("-", $sort);
         }
         if (Request::has('sort') && Request::get('sort') == 'custom-year') {
@@ -45,7 +45,7 @@ class ItemController extends Controller
 
     public function admin_show_items()
     {
-        $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->paginate(9);
+        $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->get();
 
         return view('front.admin_view_items',['items' => $items]);
     }
@@ -59,7 +59,7 @@ class ItemController extends Controller
             $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->paginate(9);
         }
 
-        return view('front.offer_list',['items' => $items]);
+        return view('front.offer_list',['items' => $items, 'category' => $category]);
     }
 
 }

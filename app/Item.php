@@ -51,7 +51,7 @@ class Item extends Model
     public static function scopeByFilter($query, $sort) {
 
         if($sort) {
-            $query->orderBy('name',$sort[1]);
+            $query->orderBy($sort[0],$sort[1]);
         }
 
         return $query;
