@@ -30,7 +30,7 @@ class ItemController extends Controller
         //Czy istnieje get z zabezpieczeniem
         if (Request::has('sort') && (Request::get('sort') == 'nazwa-asc' || Request::get('sort') == 'nazwa-desc' || Request::get('sort') == 'rocznik-asc' || Request::get('sort') == 'rocznik-desc')) {
             $sort = str_replace("nazwa", "name", Request::get('sort'));
-            $sort = str_replace("rocznik", "year", Request::get('sort'));
+            $sort = str_replace("rocznik", "year", $sort);
             $this->sort = explode("-", $sort);
         }
         if (Request::has('sort') && Request::get('sort') == 'custom-year') {
