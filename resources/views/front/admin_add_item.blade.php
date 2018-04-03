@@ -16,6 +16,10 @@
                     <input class="form-control admin_input" id="rok" placeholder="rocznik" aria-describedby="basic-addon2" name="rok" type="text" required>
                 </div>
                 <div class="col-xs-12 input-group form_margin">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Miasto</span>
+                    <input class="form-control admin_input" id="miasto" placeholder="miasto" aria-describedby="basic-addon2" name="miasto" type="text" required>
+                </div>
+                <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Kategoria</span>
                     <!--<input class="form-control admin_input" id="kategoria" placeholder="kategoria" aria-describedby="basic-addon2" name="kategoria" type="text" required>-->
                     <select name="kategoria" style="float:left; margin-top: 3px; margin-left: 10px;">

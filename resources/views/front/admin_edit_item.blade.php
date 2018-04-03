@@ -14,6 +14,10 @@
                     <span class="form-control admin_input">{{$item->name}}</span>
                 </div>
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Miasto</span>
+                    <span class="form-control admin_input">{{$item->city}}</span>
+                </div>
+                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Rocznik</span>
                     <span class="form-control admin_input">{{$item->year}}</span>
                 </div>
@@ -27,6 +31,10 @@
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Nazwa</span>
                     {{ Form::text('new_name','',['class' => 'form-control admin_input']) }}
+                </div>
+                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Miasto</span>
+                    {{ Form::text('new_city','',['class' => 'form-control admin_input']) }}
                 </div>
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Rocznik</span>

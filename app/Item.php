@@ -14,6 +14,8 @@ class Item extends Model
         $item = new Item;
         $item->name = $params['nazwa'];
         $item->slug = str_slug($params['nazwa']);
+        $item->city = $params['miasto'];
+        $item->city_slug = str_slug($params['miasto']);
         $item->year = $params['rok'];
         $item->category_id = $params['kategoria'];
 
@@ -71,7 +73,7 @@ class Item extends Model
     public static function scopeCustomTown($query, $sort) {
 
         if($sort) {
-            $query->where('name','like',$sort);
+            $query->where('city','like',str_slug($sort));
         }
 
         return $query;

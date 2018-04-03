@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Gate;
@@ -43,6 +44,33 @@ class ItemController extends Controller
         //dd( Request::get('producent'));
     }
 
+    public function new_item_view() {
+        if (Auth::check()) {
+            $categories = Category::get(); //dd($categories);
+            return view('front.admin_add_item', ['categories' => $categories]);
+        }
+        else {
+            return redirect('home');
+        }
+    }
+
+    public function create_new_item() {
+        try {
+            //dd($request->file('zdjecie_przod'));
+            //dd(2);
+            $params = Request::all();
+            Item::NewItem($params);
+            flash()->success('Nowy przedmiot został stworzony!');
+        }
+        catch (exception $e) {
+            dd($e);
+            flash()->warning('Nie udało się stworzyć nowego przedmiotu :(');
+        }
+
+        return back();
+
+    }
+
     public function admin_show_items()
     {
         $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->get();
@@ -58,7 +86,6 @@ class ItemController extends Controller
         else {
             $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->paginate(9);
         }
-
         return view('front.offer_list',['items' => $items, 'category' => $category]);
     }
 

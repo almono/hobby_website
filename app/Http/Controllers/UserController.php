@@ -69,33 +69,6 @@ class UserController extends Controller
         }
     }
 
-    public function new_item_view() {
-        if (Auth::check()) {
-            $categories = Category::get(); //dd($categories);
-            return view('front.admin_add_item', ['categories' => $categories]);
-        }
-        else {
-            return redirect('home');
-        }
-    }
-
-    public function create_new_item(Request $request) {
-        try {
-            //dd($request->file('zdjecie_przod'));
-            //dd(2);
-            $params = $request->all();
-            Item::NewItem($params);
-            flash()->success('Nowy przedmiot został stworzony!');
-        }
-        catch (exception $e) {
-            dd($e);
-            flash()->warning('Nie udało się stworzyć nowego przedmiotu :(');
-        }
-
-        return back();
-
-    }
-
     public function new_category_view() {
         if (Auth::check()) {
             return view('front.admin_add_category');
@@ -150,6 +123,9 @@ class UserController extends Controller
 
         if (isset($input['new_name']) && $input['new_name'] != '') {
             $item->name = $input['new_name'];
+        }
+        if (isset($input['new_city']) && $input['new_city'] != '') {
+            $item->city = $input['new_city'];
         }
         if (isset($input['new_year']) && $input['new_year'] != '') {
             $item->year = $input['new_year'];

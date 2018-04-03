@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="col-xs-12 col-md-12">
-<div class="col-xs-12" style="border: 1px black solid; border-radius: 10px; margin-top: 15px; margin-bottom: 15px; color: #CEBCED;">
+<div class="col-xs-12" style="border: 1px black solid; border-radius: 10px; margin-top: 15px; margin-bottom: 15px; color: #CEBCED; padding-top: 10px; padding-bottom: 10px;">
 <form action="{{url("category/$category")}}">
     <b>Sortowanie:</b>
     <select name="sort" id="sort" class="form-control" style="width: 150px; display: inline-block; margin-left: 5px; margin-right: 5px;">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #CEBCED; font-size: 18px;">{{$i->name}}, {{$i->miasto}} {{$i->year}}r</div>
+            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #CEBCED; font-size: 18px;">{{$i->name}}, {{$i->city}} {{$i->year}}r</div>
         </div>
     @endforeach
 
@@ -50,6 +50,7 @@
         var value = $('#sort').children(":selected").val(); console.log(value);
 
         if ( value == 'custom-year') {
+            $("#custom_town").hide();
             $("#custom_year").show();
             $("#custom_year").css("display","inline-block");
         }
@@ -69,6 +70,7 @@
             console.log(value);
 
             if ( value == 'custom-year') {
+                $("#custom_town").hide();
                 $("#custom_year").show();
                 $("#custom_year").css("display","inline-block");
             }

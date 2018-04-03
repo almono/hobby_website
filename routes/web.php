@@ -27,8 +27,8 @@ Route::post('/login',['uses' => 'MainpageController@login', 'as' => 'login']);
 Route::get('/admin_login', ['uses' => 'UserController@admin_login', 'as' => 'admin_login']);
 Route::get('/admin', ['uses' => 'UserController@admin_panel', 'as' => 'admin_panel']);
 
-Route::get('/admin/dodaj_przedmiot' , ['uses' => 'UserController@new_item_view', 'as' => 'admin_new_item']);
-Route::post('/admin/dodaj_przedmiot' , ['uses' => 'UserController@create_new_item', 'as' => 'admin_add_new_item']);
+Route::get('/admin/dodaj_przedmiot' , ['uses' => 'ItemController@new_item_view', 'as' => 'admin_new_item']);
+Route::post('/admin/dodaj_przedmiot' , ['uses' => 'ItemController@create_new_item', 'as' => 'admin_add_new_item']);
 
 Route::get('/admin/dodaj_kategorie', ['uses' => 'UserController@new_category_view', 'as' => 'admin_new_category']);
 Route::post('/admin/dodaj_kategorie', ['uses' => 'UserController@create_new_category', 'as' => 'admin_add_new_category']);
