@@ -73,7 +73,7 @@ class Item extends Model
     public static function scopeCustomTown($query, $sort) {
 
         if($sort) {
-            $query->where('city','like',str_slug($sort));
+            $query->where('city_slug','like',str_slug($sort));
         }
 
         return $query;

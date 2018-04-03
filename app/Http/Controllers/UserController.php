@@ -126,6 +126,7 @@ class UserController extends Controller
         }
         if (isset($input['new_city']) && $input['new_city'] != '') {
             $item->city = $input['new_city'];
+            $item->city_slug = str_slug($input['new_city']);
         }
         if (isset($input['new_year']) && $input['new_year'] != '') {
             $item->year = $input['new_year'];
