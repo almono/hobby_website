@@ -20,6 +20,10 @@
                 </select>
                 <input type="text" class="form-control" name="custom_year" id="custom_year" style="display:none; width: 150px;">
                 <input type="text" class="form-control" name="custom_town" id="custom_town" style="display:none; width: 150px;">
+            <select name="sort_subcategory" id="sort_subcategory" class="form-control" style="width: 200px; display: inline-block; margin-left: 5px; margin-right: 5px;">
+                <option value="Kolej">Kolej</option>
+                <option value="Miejska">Komunikacja miejska</option>
+            </select>
                 <input type="submit" class="btn btn-info" value="Sortuj">
             {{ Form::close() }}
         </div>

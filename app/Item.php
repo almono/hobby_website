@@ -18,9 +18,12 @@ class Item extends Model
         $item->city_slug = str_slug($params['miasto']);
         $item->year = $params['rok'];
         $item->category_id = $params['kategoria'];
+        $item->subcategory = $params['podkategoria'];
 
         $file1 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-1" . ".jpg";
         $file2 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-2" . ".jpg";
+
+        $item->img_orient = $params['zdjecie_orientacja'];
 
         $item->img_front = $file1;
         $item->img_back = $file2;
@@ -70,10 +73,38 @@ class Item extends Model
 
     }
 
+    public static function scopeCustomName($query, $sort) {
+
+        if($sort) {
+            $query->where('name','like','%'. str_slug($sort) .'%');
+        }
+
+        return $query;
+
+    }
+
     public static function scopeCustomTown($query, $sort) {
 
         if($sort) {
-            $query->where('city_slug','like',str_slug($sort));
+            $query->where('city_slug','like','%' . str_slug($sort) . '%');
+        }
+
+        return $query;
+
+    }
+
+    public static function scopePodkategoria($query, $sort) {
+
+        if($sort) {
+            $query->where('subcategory','like','%' . str_slug($sort) . '%');
+        }
+        return $query;
+    }
+
+    public static function scopeCustomYear2($query, $sort1, $sort2) {
+
+        if($sort1 || $sort2) {
+            $query->whereBetween('year', [$sort1, $sort2]);
         }
 
         return $query;

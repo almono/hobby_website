@@ -31,7 +31,7 @@
         <div class="col-xs-10" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-top:none; border-right:none">
 
         </div>
-        <div class="col-xs-2" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-left: none;">
+        <div class="col-xs-2" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-left: none; position: relative;">
             <div class="col-xs-12" style="margin-top: 15px">
                 <a href="{{route('admin_new_item')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-plus-sign"></span>Dodaj przedmiot</a>
             </div>
@@ -43,6 +43,12 @@
             </div>
             <div class="col-xs-12" style="margin-top: 15px">
                 <a href="{{route('admin_show_categories')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Wyświetl kategorie</a>
+            </div>
+            <!--<div class="col-xs-12" style="margin-top: 15px">
+                <a href="{{route('admin_show_categories')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Zarządzaj kategoriami</a>
+            </div>-->
+            <div class="col-xs-12" style="bottom: 10px; position: absolute;">
+                <a href="{{route('logout')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Wyloguj</a>
             </div>
         </div>
         <div class="col-xs-10" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-right: none">

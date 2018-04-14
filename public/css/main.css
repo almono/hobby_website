@@ -215,7 +215,19 @@ input[type=file] {
     height: 160px !important;
     max-width: 250px !important;
 }
+.dropdown-menu {
+    margin: 0;
+}
 
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    display: block;
+}
 @media (max-width: 991px) {
     .navbar-header {
         float: none;

@@ -25,6 +25,10 @@ class ItemController extends Controller
         $this->sort = array();
         $this->year = null;
         $this->town = null;
+        $this->name = null;
+        $this->subcategory = null;
+        $this->start_year = null;
+        $this->end_year = null;
 
         // '/([0-9]+);([0-9]+)/' do przedzialow
 
@@ -37,8 +41,20 @@ class ItemController extends Controller
         if (Request::has('sort') && Request::get('sort') == 'custom-year') {
             $this->year = Request::get('custom_year');
         }
+        if (Request::has('sort') && Request::get('sort') == 'custom-name') {
+            $this->name = Request::get('custom_name');
+        }
         if (Request::has('sort') && Request::get('sort') == 'custom-town') {
             $this->town = Request::get('custom_town');
+        }
+        if (Request::has('sort_subcategory') && Request::get('sort_subcategory') == 'Kolej' || Request::get('sort_subcategory') == 'Miejska') {
+            $this->subcategory = Request::get('sort_subcategory');
+        }
+        if (Request::has('start_year')) {
+            $this->start_year = Request::get('start_year');
+        }
+        if (Request::has('end_year')) {
+            $this->end_year = Request::get('end_year');
         }
         //dd( );
         //dd( Request::get('producent'));
@@ -56,8 +72,6 @@ class ItemController extends Controller
 
     public function create_new_item() {
         try {
-            //dd($request->file('zdjecie_przod'));
-            //dd(2);
             $params = Request::all();
             Item::NewItem($params);
             flash()->success('Nowy przedmiot został stworzony!');
@@ -73,7 +87,7 @@ class ItemController extends Controller
 
     public function admin_show_items()
     {
-        $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->get();
+        $items = Item::byFilter($this->sort)->customYear($this->year)->customName($this->name)->customTown($this->town)->podkategoria($this->subcategory)->get();
 
         return view('front.admin_view_items',['items' => $items]);
     }
@@ -81,10 +95,20 @@ class ItemController extends Controller
     public function show_items($category = null)
     {
         if ($category != null) {
-            $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->where('category_id','=',$category)->paginate(9);
+            $items = Item::byFilter($this->sort)
+                ->customYear($this->year)
+                ->customName($this->name)
+                ->customTown($this->town)
+                ->podkategoria($this->subcategory)
+                ->customYear2($this->start_year,$this->end_year)->where('category_id','=',$category)->paginate(9);
         }
         else {
-            $items = Item::byFilter($this->sort)->customYear($this->year)->customTown($this->town)->paginate(9);
+            $items = Item::byFilter($this->sort)
+                ->customYear($this->year)
+                ->customName($this->name)
+                ->customTown($this->town)
+                ->podkategoria($this->subcategory)
+                ->customYear2($this->start_year,$this->end_year)->paginate(9);
         }
         return view('front.offer_list',['items' => $items, 'category' => $category]);
     }

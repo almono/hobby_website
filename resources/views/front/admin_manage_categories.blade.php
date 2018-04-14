@@ -17,7 +17,6 @@
                             {{ Form::submit('Edytuj', ['class' => 'btn btn-info', 'style' => 'width: 100px;']) }}
                             {{ Form::close() }}
 
-
                         </div>
                     </div>
                 </div>

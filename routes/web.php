@@ -43,5 +43,6 @@ Route::post('/admin/edit_item/{id}', ['uses' => 'UserController@update_item', 'a
 
 Route::post('/admin/edytuj_kategorie/{id}', ['uses' => 'CategoryController@edit_category', 'as' => 'edit_category']);
 Route::post('/admin/edit_category/{id}', ['uses' => 'CategoryController@update_category', 'as' => 'update_category']);
+Route::post('/admin/edit_category/{id}', ['uses' => 'CategoryController@update_homepage_cat', 'as' => 'update_homepage_cat']);
 
 Route::get('/category/{id}', ['uses' => 'ItemController@show_items', 'as' => 'show_items']);

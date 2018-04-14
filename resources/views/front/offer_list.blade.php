@@ -12,11 +12,17 @@
         <option value="rocznik-asc">Rocznik rosnąco</option>
         <option value="rocznik-desc">Rocznik malejąco</option>
         <option value="custom-year">Rok</option>
+        <option value="custom-name">Nazwa</option>
         <option value="custom-town">Miasto</option>
     </select>
     <input type="text" class="form-control" name="custom_year" id="custom_year" style="display:none; width: 150px;">
+    <input type="text" class="form-control" name="custom_name" id="custom_name" style="display:none; width: 150px;">
     <input type="text" class="form-control" name="custom_town" id="custom_town" style="display:none; width: 150px;">
     <input type="hidden" name="category_id" value="{{$category}}">
+    <select name="sort_subcategory" id="sort_subcategory" class="form-control" style="width: 200px; display: inline-block; margin-left: 5px; margin-right: 5px;">
+        <option value="Kolej">Kolej</option>
+        <option value="Miejska">Komunikacja miejska</option>
+    </select>
     <input type="submit" class="btn btn-info" value="Sortuj">
 </form>
 </div>
@@ -34,7 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #CEBCED; font-size: 18px;">{{$i->name}}, {{$i->city}} {{$i->year}}r</div>
+            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #CEBCED; font-size: 18px;">{{$i->name}}, {{$i->year}} r.</div>
         </div>
     @endforeach
 
@@ -51,17 +57,26 @@
 
         if ( value == 'custom-year') {
             $("#custom_town").hide();
+            $("#custom_name").hide();
             $("#custom_year").show();
             $("#custom_year").css("display","inline-block");
         }
         else if ( value == 'custom-town'){
             $("#custom_year").hide();
+            $("#custom_name").hide();
             $("#custom_town").show();
             $("#custom_town").css("display","inline-block");
+        }
+        else if ( value == 'custom-name'){
+            $("#custom_year").hide();
+            $("#custom_town").hide();
+            $("#custom_name").show();
+            $("#custom_name").css("display","inline-block");
         }
         else {
             $("#custom_year").hide();
             $("#custom_town").hide();
+            $("#custom_name").hide();
         }
 
         $('#sort').change(function(){
@@ -71,13 +86,21 @@
 
             if ( value == 'custom-year') {
                 $("#custom_town").hide();
+                $("#custom_name").hide();
                 $("#custom_year").show();
                 $("#custom_year").css("display","inline-block");
             }
             else if ( value == 'custom-town'){
                 $("#custom_year").hide();
+                $("#custom_name").hide();
                 $("#custom_town").show();
                 $("#custom_town").css("display","inline-block");
+            }
+            else if ( value == 'custom-name'){
+                $("#custom_year").hide();
+                $("#custom_town").hide();
+                $("#custom_name").show();
+                $("#custom_name").css("display","inline-block");
             }
             else {
                 $("#custom_year").hide();

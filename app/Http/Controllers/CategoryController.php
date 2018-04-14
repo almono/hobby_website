@@ -39,6 +39,9 @@ class CategoryController extends Controller
         if (isset($input['new_name']) && $input['new_name'] != '') {
             $category->name = $input['new_name'];
         }
+        if (isset($input['is_home']) && $input['is_home'] != '') {
+            $category->is_home = $input['is_home'];
+        }
         try {
             $category->save();
         }
@@ -48,6 +51,24 @@ class CategoryController extends Controller
 
         flash()->success('Przedmiot zmodyfikowano pomyślnie!');
         return redirect()->route('admin_show_categories');
+    }
+
+    public function update_homepage_cat(Request $request) {
+
+        $input = $request->all();
+        $category = Category::findorFail($input['id']);
+        if (isset($input['is_home']) && $input['is_home'] != '') {
+            $category->is_home = $input['is_home'];
+        }
+
+        try {
+            $category->save();
+        }
+        catch (Exception $e){
+            flash()->warning('Wystąpił błąd podczas zapisu :( ');
+        }
+
+        flash()->success('Przedmiot zmodyfikowano pomyślnie!');
     }
 
 }

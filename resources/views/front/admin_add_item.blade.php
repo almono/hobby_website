@@ -6,7 +6,7 @@
             <b style="font-size: 30px; color: antiquewhite">KREATOR</b>
         </div>
         {{ Form::open(array('route' => 'admin_add_new_item', 'method' => 'POST', 'files' => true)) }}
-            <div class="col-xs-offset-4 col-xs-4 text-center" style="margin-top: 20px;">
+            <div class="col-xs-offset-3 col-xs-6 text-center" style="margin-top: 20px;">
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Nazwa</span>
                     <input class="form-control admin_input" id="nazwa" placeholder="nazwa przedmiotu" aria-describedby="basic-addon2" name="nazwa" type="text" required>
@@ -28,6 +28,13 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="col-xs-12 input-group form_margin">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Podkategoria</span>
+                    <select name="podkategoria" style="float:left; margin-top: 3px; margin-left: 10px;">
+                        <option value="Kolej">Kolej</option>
+                        <option value="Kolej">Komunikacja miejska</option>
+                    </select>
+                </div>
                 <div class="col-xs-12 input-group form_margin" style="margin-top: 20px">
                     <span class="input-group-addon admin_span" id="basic-addon2">Zdjęcie przód</span>
                     <input class="admin_input" id="zdjecie_przod" placeholder="kategoria" aria-describedby="basic-addon2" name="zdjecie_przod" type="file" style="margin-left: 10px; margin-top: 2px; " required>
@@ -36,10 +43,14 @@
                     <span class="input-group-addon admin_span" id="basic-addon2">Zdjęcie tył</span>
                     <input class="admin_input" id="zdjecie_tyl" placeholder="kategoria" aria-describedby="basic-addon2" name="zdjecie_tyl" type="file" style="margin-left: 10px; margin-top: 2px" required>
                 </div>
+                <div class="col-xs-12 input-group form_margin">
+                    <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja" checked value="1">Zdjęcie poziome</label>
+                    <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja" value="0">Zdjęcie pionowe</label>
+                </div>
             </div>
 
             <div class="col-xs-12 text-center" style="margin: auto; margin-top: 30px">
-                {{Form::submit('STWÓRZ NOWY')}}
+                {{Form::submit('STWÓRZ NOWY',['class' => 'btn btn-info', 'style' => 'width: 200px; height: 50px;'])}}
             </div>
         {{Form::close()}}
     </div>
