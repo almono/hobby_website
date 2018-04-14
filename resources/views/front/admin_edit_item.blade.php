@@ -48,6 +48,13 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Podkategoria</span>
+                    <select name="new_subcat" style="float:left; margin-top: 3px; margin-left: 10px;">
+                        <option value="Kolej">Kolej</option>
+                        <option value="Kolej">Komunikacja miejska</option>
+                    </select>
+                </div>
                 {{ Form::checkbox('active','1',true) }} <b style="color:white;">Czy aktywny?</b>
                 <br><br>
                 {{ Form::submit('Zapisz',['class' => 'btn btn-info', 'style' => 'width: 150px;']) }}

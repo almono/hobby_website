@@ -132,7 +132,7 @@ class UserController extends Controller
             $item->year = $input['new_year'];
         }
         $item->category_id = $input['kategoria'];
-
+        $item->subcategory = $input['new_subcat'];
         try {
             $item->save();
         }
