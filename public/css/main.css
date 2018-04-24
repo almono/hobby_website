@@ -128,7 +128,6 @@ input[type=file] {
     border: 1px black solid;
     margin-top: 10px;
     padding-top: 10px;
-    max-height: 300px;
 }
 /*
 .item-div > img {

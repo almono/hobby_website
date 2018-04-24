@@ -23,7 +23,8 @@ class Item extends Model
         $file1 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-1" . ".jpg";
         $file2 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-2" . ".jpg";
 
-        $item->img_orient = $params['zdjecie_orientacja'];
+        $item->img_orient_front = $params['zdjecie_orientacja_front'];
+        $item->img_orient_back = $params['zdjecie_orientacja_back'];
 
         $item->img_front = $file1;
         $item->img_back = $file2;

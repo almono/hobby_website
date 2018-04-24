@@ -2,9 +2,6 @@
 @section('admin_content')
 
     <div class="col-xs-12"  style="margin-top: 0px; height: 100%; padding-left: 0px; padding-right: 0px;">
-        <div class="col-xs-12 text-center" style="margin-top: 20px">
-            <b style="font-size: 30px; color: antiquewhite">KREATOR</b>
-        </div>
         {{ Form::open(array('route' => 'admin_add_new_item', 'method' => 'POST', 'files' => true)) }}
             <div class="col-xs-offset-3 col-xs-6 text-center" style="margin-top: 20px;">
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
@@ -40,12 +37,16 @@
                     <input class="admin_input" id="zdjecie_przod" placeholder="kategoria" aria-describedby="basic-addon2" name="zdjecie_przod" type="file" style="margin-left: 10px; margin-top: 2px; " required>
                 </div>
                 <div class="col-xs-12 input-group form_margin">
+                    <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja_front" checked value="1">Zdjęcie poziome</label>
+                    <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja_front" value="0">Zdjęcie pionowe</label>
+                </div>
+                <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Zdjęcie tył</span>
                     <input class="admin_input" id="zdjecie_tyl" placeholder="kategoria" aria-describedby="basic-addon2" name="zdjecie_tyl" type="file" style="margin-left: 10px; margin-top: 2px" required>
                 </div>
                 <div class="col-xs-12 input-group form_margin">
-                    <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja" checked value="1">Zdjęcie poziome</label>
-                    <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja" value="0">Zdjęcie pionowe</label>
+                    <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja_back" checked value="1">Zdjęcie poziome</label>
+                    <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja_back" value="0">Zdjęcie pionowe</label>
                 </div>
             </div>
 

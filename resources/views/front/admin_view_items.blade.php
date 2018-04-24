@@ -43,7 +43,7 @@
                         <span class="col-xs-1 admin-text" style="margin-top: 50px;">{{$item->city}}</span>
                         <span class="col-xs-1 admin-text" style="margin-top: 50px;">{{$item->year}}</span>
                         <span class="col-xs-2 admin-text" style="margin-top: 50px;">{{$item->category->name}}</span>
-                        <div class="col-xs-2" style="margin-top: 45px;">
+                        <div class="col-xs-2" style="margin-top: 45px; padding: 0px;">
 
                             {{ Form::open([ 'method' => 'POST', 'route' => ['edit_item', $item->id], 'style' => 'float: left']) }}
                             {{ Form::submit('Edytuj', ['class' => 'btn btn-info', 'style' => 'width: 100px;']) }}
