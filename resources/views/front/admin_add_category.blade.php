@@ -15,6 +15,10 @@
                 <span class="input-group-addon admin_span" id="basic-addon2">Opis</span>
                 <input class="form-control admin_input" id="opis" placeholder="opis" aria-describedby="basic-addon2" name="opis" type="text">
             </div>
+            <div class="col-xs-12 input-group form_margin">
+                <span class="input-group-addon admin_span" id="basic-addon2">Czy na stronie głównej</span>
+                <input class="form-control admin_input" id="is_home" placeholder="is_home" aria-describedby="basic-addon2" name="is_home" type="checkbox">
+            </div>
         </div>
 
         <div class="col-xs-12 text-center" style="margin: auto; margin-top: 30px">

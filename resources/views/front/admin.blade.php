@@ -4,15 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}"/>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.css') }}">
 
     <script type="text/javascript" src="{{URL::asset('js/jquery-3.2.1.js') }}"></script>
@@ -25,33 +23,30 @@
 <body style="background: black; height: 100%; min-height: 100%;">
 <div class="container-fluid" style="height: 100%;">
 
-        <div class="col-xs-2" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-left: none; border-top: none">
+        <div class="col-xs-3" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-left: none; border-top: none">
 
         </div>
-        <div class="col-xs-10" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-top:none; border-right:none">
+        <div class="col-xs-9" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-top:none; border-right:none">
 
         </div>
-        <div class="col-xs-2" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-left: none; position: relative;">
-            <div class="col-xs-12" style="margin-top: 15px">
+        <div class="col-xs-3" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-left: none; position: relative;">
+            <div class="col-xs-10 col-xs-offset-1" style="margin-top: 15px">
                 <a href="{{route('admin_new_item')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-plus-sign"></span>Dodaj przedmiot</a>
             </div>
-            <div class="col-xs-12" style="margin-top: 15px">
+            <div class="col-xs-10 col-xs-offset-1" style="margin-top: 15px">
                 <a href="{{route('admin_new_category')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-plus-sign"></span>Dodaj kategorie</a>
             </div>
-            <div class="col-xs-12" style="margin-top: 15px">
+            <div class="col-xs-10 col-xs-offset-1" style="margin-top: 15px">
                 <a href="{{route('admin_show_items')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Wyświetl przedmioty</a>
             </div>
-            <div class="col-xs-12" style="margin-top: 15px">
+            <div class="col-xs-10 col-xs-offset-1" style="margin-top: 15px">
                 <a href="{{route('admin_show_categories')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Wyświetl kategorie</a>
             </div>
-            <!--<div class="col-xs-12" style="margin-top: 15px">
-                <a href="{{route('admin_show_categories')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Zarządzaj kategoriami</a>
-            </div>-->
-            <div class="col-xs-12" style="bottom: 10px; position: absolute;">
+            <div class="col-xs-10 col-xs-offset-1" style="bottom: 10px; position: absolute;">
                 <a href="{{route('logout')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Wyloguj</a>
             </div>
         </div>
-        <div class="col-xs-10" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-right: none">
+        <div class="col-xs-9" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-right: none">
             @yield('admin_content')
         </div>
         <div id="alert" class="col-xs-offset-3 col-xs-6" style="padding-top: 10px; height: 15%; padding-left: 0px; padding-right: 0px; margin-top: 20px;">

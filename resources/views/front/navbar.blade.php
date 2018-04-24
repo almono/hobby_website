@@ -69,7 +69,14 @@
                                         </ul>
                                     </div>
                                 </div>
-
+                                <?php $categories = App\Category::where('is_home','1')->where('id','!=','1')->where('id','!=','2')->get(); ?>
+                                @foreach ($categories as $cat)
+                                <li>
+                                    <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                                        {{$cat->name}}
+                                    </a>
+                                </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div style="float: right;">

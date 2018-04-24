@@ -14,7 +14,7 @@
                         <div class="col-xs-6" style="padding-top: 10px">
 
                             {{ Form::open([ 'method' => 'POST', 'route' => ['edit_category', $c->id], 'style' => 'float: left']) }}
-                            {{ Form::submit('Edytuj', ['class' => 'btn btn-info', 'style' => 'width: 100px;']) }}
+                            {{ Form::checkbox('Edytuj', ['style' => 'width: 100px;']) }}
                             {{ Form::close() }}
 
                         </div>

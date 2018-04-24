@@ -40,7 +40,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #CEBCED; font-size: 18px;">{{$i->name}}, {{$i->year}} r.</div>
+            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #CEBCED; font-size: 18px;">{{$i->name}}</div>
+            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #CEBCED; font-size: 18px; border-top: none;">{{$i->year}}</div>
         </div>
     @endforeach
 

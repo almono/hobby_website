@@ -57,9 +57,8 @@ class CategoryController extends Controller
 
         $input = $request->all();
         $category = Category::findorFail($input['id']);
-        if (isset($input['is_home']) && $input['is_home'] != '') {
-            $category->is_home = $input['is_home'];
-        }
+        $category->is_home = $input['value'];
+
 
         try {
             $category->save();
@@ -68,7 +67,7 @@ class CategoryController extends Controller
             flash()->warning('Wystąpił błąd podczas zapisu :( ');
         }
 
-        flash()->success('Przedmiot zmodyfikowano pomyślnie!');
+        flash()->success('Kategoria została zmieniona!');
     }
 
 }

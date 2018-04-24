@@ -12,7 +12,13 @@ class Category extends Model
         $category = new Category;
         $category->name = $params['nazwa'];
         $category->description = $params['opis'];
-        $category->is_home = $params['is_home'];
+        if (isset($params['is_home'])) {
+            $category->is_home = '1';
+        }
+        else {
+            $category->is_home = '0';
+        }
+
 
         try {
             $category->save();
