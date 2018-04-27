@@ -85,6 +85,57 @@ class ItemController extends Controller
 
     }
 
+    public function delete_item($id) {
+        $item = Item::find($id);
+        try {
+            $item->delete();
+        }
+        catch (exception $e) {
+            flash()->warning('Wystąpił błąd podczas usuwania!');
+        }
+
+        return back();
+    }
+
+    public function edit_item($id) {
+        $item = Item::where('id',$id)->with('category')->firstOrFail(); //dd(File::exists(storage_path() . "\zdjecia\\" . "test-1000-2.jpg"));
+        $categories = Category::get();
+        return view('front.admin_edit_item',['item' => $item, 'categories' => $categories]);
+    }
+
+    public function update_item(Request $request) {
+
+        $input = Request::all();
+        $item = Item::findorFail($input['id']);
+
+        if (isset($input['new_name']) && $input['new_name'] != '') {
+            $item->name = $input['new_name'];
+        }
+        if (isset($input['new_city']) && $input['new_city'] != '') {
+            $item->city = $input['new_city'];
+            $item->city_slug = str_slug($input['new_city']);
+        }
+        if (isset($input['new_year']) && $input['new_year'] != '') {
+            $item->year = $input['new_year'];
+        }
+
+        $item->category_id = $input['kategoria'];
+        $item->subcategory = $input['new_subcat'];
+
+        $item->img_orient_front = $input['new_orient_front'];
+        $item->img_orient_back = $input['new_orient_back'];
+
+        try {
+            $item->save();
+        }
+        catch (Exception $e){
+            flash()->warning('Wystąpił błąd podczas zapisu :( ');
+        }
+
+        flash()->success('Przedmiot zmodyfikowano pomyślnie!');
+        return redirect()->route('admin_show_items');
+    }
+
     public function admin_show_items()
     {
         $items = Item::byFilter($this->sort)->customYear($this->year)->customName($this->name)->customTown($this->town)->podkategoria($this->subcategory)->get();
@@ -100,7 +151,7 @@ class ItemController extends Controller
                 ->customName($this->name)
                 ->customTown($this->town)
                 ->podkategoria($this->subcategory)
-                ->customYear2($this->start_year,$this->end_year)->where('category_id','=',$category)->paginate(9);
+                ->customYear2($this->start_year,$this->end_year)->where('category_id','=',$category)->where('active','=','1')->paginate(18);
         }
         else {
             $items = Item::byFilter($this->sort)
@@ -108,7 +159,7 @@ class ItemController extends Controller
                 ->customName($this->name)
                 ->customTown($this->town)
                 ->podkategoria($this->subcategory)
-                ->customYear2($this->start_year,$this->end_year)->paginate(9);
+                ->customYear2($this->start_year,$this->end_year)->where('active','=','1')->paginate(18);
         }
         return view('front.offer_list',['items' => $items, 'category' => $category]);
     }

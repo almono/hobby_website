@@ -25,6 +25,26 @@
                     <span class="input-group-addon admin_span" id="basic-addon2">Kategoria</span>
                     <span class="form-control admin_input">{{$item->category->name}}</span>
                 </div>
+                <div class="col-xs-6 input-group form_margin" style="width: 100%; color: white;">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Zdjęcie przód</span>
+                    <img class="col-xs-9" src="{{ asset("img/$item->img_front")}}" alt="front" style="max-height: 100px; max-width: 100px;">
+                    <b>Orientacja: </b><br>
+                    @if ($item->img_orient_front == 1)
+                        <b>Pozioma</b>
+                    @else
+                        <b>Pionowa</b>
+                    @endif
+                </div>
+                <div class="col-xs-6 input-group form_margin" style="width: 100%; color: white;">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Zdjęcie tył</span>
+                    <img class="col-xs-9" src="{{ asset("img/$item->img_back")}}" alt="front" style="max-height: 100px; max-width: 100px;">
+                    <b>Orientacja: </b><br>
+                    @if ($item->img_orient_back == 1)
+                        <b>Pozioma</b>
+                    @else
+                        <b>Pionowa</b>
+                    @endif
+                </div>
             </div>
             <div class="col-xs-4 text-center" style="margin-top: 20px;">
                 <b style="color:white; font-size: 24px;">Nowe dane</b>
@@ -52,7 +72,21 @@
                     <span class="input-group-addon admin_span" id="basic-addon2">Podkategoria</span>
                     <select name="new_subcat" style="float:left; margin-top: 3px; margin-left: 10px;">
                         <option value="Kolej">Kolej</option>
-                        <option value="Kolej">Komunikacja miejska</option>
+                        <option value="Komunikacja miejska">Komunikacja miejska</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
+                    <span class="input-group-addon admin_span" id="basic-addon2" style="width: 150px !important;">Orientacja przodu</span>
+                    <select name="new_orient_front" style="float:left; margin-top: 3px; margin-left: 10px;">
+                        <option value="1" @if($item->img_orient_front == 1) selected @endif>Pozioma</option>
+                        <option value="0" @if($item->img_orient_front == 0) selected @endif>Pionowa</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
+                    <span class="input-group-addon admin_span" id="basic-addon2" style="width: 150px !important;">Orientacja tyłu</span>
+                    <select name="new_orient_back" style="float:left; margin-top: 3px; margin-left: 10px;">
+                        <option value="1" @if($item->img_orient_back == 1) selected @endif>Pozioma</option>
+                        <option value="0" @if($item->img_orient_back == 0) selected @endif>Pionowa</option>
                     </select>
                 </div>
                 {{ Form::checkbox('active','1',true) }} <b style="color:white;">Czy aktywny?</b>

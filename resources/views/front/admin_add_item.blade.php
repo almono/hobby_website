@@ -29,7 +29,7 @@
                     <span class="input-group-addon admin_span" id="basic-addon2">Podkategoria</span>
                     <select name="podkategoria" style="float:left; margin-top: 3px; margin-left: 10px;">
                         <option value="Kolej">Kolej</option>
-                        <option value="Kolej">Komunikacja miejska</option>
+                        <option value="Komunikacja miejska">Komunikacja miejska</option>
                     </select>
                 </div>
                 <div class="col-xs-12 input-group form_margin" style="margin-top: 20px">
