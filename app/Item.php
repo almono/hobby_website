@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Item extends Model
 {
@@ -20,8 +21,10 @@ class Item extends Model
         $item->category_id = $params['kategoria'];
         $item->subcategory = $params['podkategoria'];
 
-        $file1 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-1" . ".jpg";
-        $file2 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-2" . ".jpg";
+        $now = Carbon::now()->timestamp;
+
+        $file1 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-1" . $now . ".jpg";
+        $file2 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-2" . $now . ".jpg";
 
         $item->img_orient_front = $params['zdjecie_orientacja_front'];
         $item->img_orient_back = $params['zdjecie_orientacja_back'];
