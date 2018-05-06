@@ -151,7 +151,7 @@ class ItemController extends Controller
                 ->customName($this->name)
                 ->customTown($this->town)
                 ->podkategoria($this->subcategory)
-                ->customYear2($this->start_year,$this->end_year)->where('category_id','=',$category)->where('active','=','1')->paginate(18);
+                ->customYear2($this->start_year,$this->end_year)->where('category_id','=',$category)->where('active','=','1')->orderBy('year','DESC')->paginate(18);
         }
         else {
             $items = Item::byFilter($this->sort)
@@ -159,7 +159,7 @@ class ItemController extends Controller
                 ->customName($this->name)
                 ->customTown($this->town)
                 ->podkategoria($this->subcategory)
-                ->customYear2($this->start_year,$this->end_year)->where('active','=','1')->paginate(18);
+                ->customYear2($this->start_year,$this->end_year)->where('active','=','1')->orderBy('year','DESC')->paginate(18);
         }
         return view('front.offer_list',['items' => $items, 'category' => $category]);
     }

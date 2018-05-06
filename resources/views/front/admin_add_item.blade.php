@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Miasto</span>
-                    <input class="form-control admin_input" id="miasto" placeholder="miasto" aria-describedby="basic-addon2" name="miasto" type="text" required>
+                    <input class="form-control admin_input" id="miasto" placeholder="miasto" aria-describedby="basic-addon2" name="miasto" type="text">
                 </div>
                 <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Kategoria</span>

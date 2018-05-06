@@ -70,7 +70,7 @@ class Item extends Model
     public static function scopeCustomYear($query, $sort) {
 
         if($sort) {
-            $query->where('year',$sort);
+            $query->orderBy('year','DESC');
         }
 
         return $query;

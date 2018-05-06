@@ -24,7 +24,8 @@
 <div class="container-fluid" style="height: 100%;">
 
         <div class="col-xs-3" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-left: none; border-top: none">
-
+            <?php $ilosc = App\Item::count();?>
+            <b style="color: white;">Ilość wszystkich kalendarzyków: {{$ilosc}}</b>
         </div>
         <div class="col-xs-9" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-top:none; border-right:none">
 
