@@ -57,6 +57,10 @@
                     {{ Form::text('new_city','',['class' => 'form-control admin_input']) }}
                 </div>
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Państwo</span>
+                    {{ Form::text('new_country','',['class' => 'form-control admin_input']) }}
+                </div>
+                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Rocznik</span>
                     {{ Form::number('new_year','',['class' => 'form-control admin_input']) }}
                 </div>

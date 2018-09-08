@@ -23,6 +23,8 @@ class ItemController extends Controller
     function __construct() {
 
         $this->sort = array();
+        $this->country = null;
+        $this->slug = null;
         $this->year = null;
         $this->town = null;
         $this->name = null;
@@ -44,8 +46,14 @@ class ItemController extends Controller
         if (Request::has('sort') && Request::get('sort') == 'custom-name') {
             $this->name = Request::get('custom_name');
         }
+        if (Request::has('sort') && Request::get('sort') == 'custom-slug') {
+            $this->slug = Request::get('custom_slug');
+        }
         if (Request::has('sort') && Request::get('sort') == 'custom-town') {
             $this->town = Request::get('custom_town');
+        }
+        if (Request::has('sort') && Request::get('sort') == 'custom-country') {
+            $this->country = Request::get('custom_country');
         }
         if (Request::has('sort_subcategory') && Request::get('sort_subcategory') == 'Kolej' || Request::get('sort_subcategory') == 'Miejska') {
             $this->subcategory = Request::get('sort_subcategory');
@@ -110,6 +118,7 @@ class ItemController extends Controller
 
         if (isset($input['new_name']) && $input['new_name'] != '') {
             $item->name = $input['new_name'];
+            $item->slug = str_slug($input['new_name']);
         }
         if (isset($input['new_city']) && $input['new_city'] != '') {
             $item->city = $input['new_city'];
@@ -117,6 +126,9 @@ class ItemController extends Controller
         }
         if (isset($input['new_year']) && $input['new_year'] != '') {
             $item->year = $input['new_year'];
+        }
+        if (isset($input['new_country']) && $input['new_country'] != '') {
+            $item->country = $input['new_country'];
         }
 
         $item->category_id = $input['kategoria'];
@@ -150,6 +162,8 @@ class ItemController extends Controller
                 ->customYear($this->year)
                 ->customName($this->name)
                 ->customTown($this->town)
+                ->customCountry($this->country)
+                ->customSlug($this->slug)
                 ->podkategoria($this->subcategory)
                 ->customYear2($this->start_year,$this->end_year)->where('category_id','=',$category)->where('active','=','1')->orderBy('year','DESC')->paginate(18);
         }
@@ -158,10 +172,26 @@ class ItemController extends Controller
                 ->customYear($this->year)
                 ->customName($this->name)
                 ->customTown($this->town)
+                ->customCountry($this->country)
+                ->customSlug($this->slug)
                 ->podkategoria($this->subcategory)
                 ->customYear2($this->start_year,$this->end_year)->where('active','=','1')->orderBy('year','DESC')->paginate(18);
         }
         return view('front.offer_list',['items' => $items, 'category' => $category]);
+    }
+
+    public function show_items_name($category,$name)
+    {
+        $items = Item::where('active','=','1')->where('category_id',$category)->where("slug",$name)->orderBy('year','DESC')->paginate(18);
+
+        return view('front.offer_list',['items' => $items, 'category' => $category]);
+    }
+
+    public function show_new_items()
+    {
+        $items = Item::where('active','1')->orderBy('created_at','DESC')->take(18)->get();
+
+        return view('front.offer_list',['items' => $items]);
     }
 
 }

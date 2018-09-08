@@ -47,3 +47,5 @@ Route::post('/admin/edit_category/{id}', ['uses' => 'CategoryController@update_c
 Route::post('/admin/update_home_category', ['uses' => 'CategoryController@update_homepage_cat', 'as' => 'update_homepage_cat']);
 
 Route::get('/category/{id}', ['uses' => 'ItemController@show_items', 'as' => 'show_items']);
+Route::get('/new_items',['uses' => 'ItemController@show_new_items' , 'as' => 'new_items' ]);
+//Route::get('/category/{id}', ['uses' => 'ItemController@show_items_name', 'as' => 'show_items_name']);

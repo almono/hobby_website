@@ -15,6 +15,7 @@ class Item extends Model
         $item = new Item;
         $item->name = $params['nazwa'];
         $item->slug = str_slug($params['nazwa']);
+        $item->country = $params['panstwo'];
         $item->city = $params['miasto'];
         $item->city_slug = str_slug($params['miasto']);
         $item->year = $params['rok'];
@@ -70,7 +71,7 @@ class Item extends Model
     public static function scopeCustomYear($query, $sort) {
 
         if($sort) {
-            $query->orderBy('year','DESC');
+            $query->where('year',$sort);
         }
 
         return $query;
@@ -80,7 +81,17 @@ class Item extends Model
     public static function scopeCustomName($query, $sort) {
 
         if($sort) {
-            $query->where('name','like','%'. str_slug($sort) .'%');
+            $query->where('slug','like','%'. str_slug($sort) .'%');
+        }
+
+        return $query;
+
+    }
+
+    public static function scopeCustomSlug($query, $sort) {
+
+        if($sort) {
+            $query->where('slug','like','%'. str_slug($sort) .'%');
         }
 
         return $query;
@@ -91,6 +102,15 @@ class Item extends Model
 
         if($sort) {
             $query->where('city_slug','like','%' . str_slug($sort) . '%');
+        }
+
+        return $query;
+
+    }
+
+    public static function scopeCustomCountry($query, $sort) {
+        if($sort) {
+            $query->where('country','=',$sort);
         }
 
         return $query;
@@ -113,6 +133,10 @@ class Item extends Model
 
         return $query;
 
+    }
+
+    public function countItems($name) {
+        return Item::where("name",$name)->count();
     }
 
 }

@@ -17,6 +17,10 @@
                     <input class="form-control admin_input" id="miasto" placeholder="miasto" aria-describedby="basic-addon2" name="miasto" type="text">
                 </div>
                 <div class="col-xs-12 input-group form_margin">
+                    <span class="input-group-addon admin_span" id="basic-addon2">Państwo</span>
+                    <input class="form-control admin_input" id="panstwo" placeholder="państwo" aria-describedby="basic-addon2" name="panstwo" type="text">
+                </div>
+                <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Kategoria</span>
                     <!--<input class="form-control admin_input" id="kategoria" placeholder="kategoria" aria-describedby="basic-addon2" name="kategoria" type="text" required>-->
                     <select name="kategoria" style="float:left; margin-top: 3px; margin-left: 10px;">
@@ -42,7 +46,7 @@
                 </div>
                 <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Zdjęcie tył</span>
-                    <input class="admin_input" id="zdjecie_tyl" placeholder="kategoria" aria-describedby="basic-addon2" name="zdjecie_tyl" type="file" style="margin-left: 10px; margin-top: 2px" required>
+                    <input class="admin_input" id="zdjecie_tyl" placeholder="kategoria" aria-describedby="basic-addon2" name="zdjecie_tyl" type="file" style="margin-left: 10px; margin-top: 2px">
                 </div>
                 <div class="col-xs-12 input-group form_margin">
                     <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja_back" checked value="1">Zdjęcie poziome</label>

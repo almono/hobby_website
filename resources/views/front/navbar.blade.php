@@ -1,8 +1,8 @@
 
-    <div class="col-xs-12"  style="margin-top: 10px; border-radius: 15px">
+    <div class="container" style="margin-top: 10px; border-radius: 15px">
 
         <div class="row hidden-xs">
-            <div class="container col-xs-12">
+            <div class="container col-xs-12" style="padding: 0;">
                 <nav class="navbar navbar-default" style="background-color: inherit; border-radius: 0; margin-bottom: 0px">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -13,7 +13,9 @@
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar" style="float: left">
                             <ul class="nav navbar-nav navbar" style="display: flex; align-items: center;">
-
+                                <a class="dropdown-toggle disabled" href="{{ route('home') }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                                    Strona główna
+                                </a>
                                 <div class="dropdown">
 
                                     <div class="dropdown">
@@ -22,7 +24,7 @@
                                             <span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu multidropdown" aria-labelledby="dropdownMenu1">
-                                            <li class="dropdown-submenu">
+                                            <li class="dropdown-submenu" hidden>
                                                 <a href="#">Lata<i class="caret"></i></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="{{url('/category/1?start_year=0&end_year=1989')}}">< 1989</a></li>
@@ -50,7 +52,7 @@
                                             <span class="caret"></span>
                                         </a>
                                         <ul class="dropdown-menu multidropdown" aria-labelledby="dropdownMenu1">
-                                            <li class="dropdown-submenu">
+                                            <li class="dropdown-submenu" hidden>
                                                 <a href="#">Lata<i class="caret"></i></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="{{url('/category/2?start_year=0&end_year=1989')}}">< 1989</a></li>
@@ -81,7 +83,8 @@
                         </div>
                         <div style="float: right;">
                             <ul class="nav navbar-nav navbar" style="display: flex; align-items: center;">
-                                <li><a href="a">Kontakt</a></li>
+                                <li><a href="{{ route('new_items') }}" class="new_items">Nowości</a></li>
+                                <li><a href="">Kontakt</a></li>
                             </ul>
                         </div>
                 </nav>

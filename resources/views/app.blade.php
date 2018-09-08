@@ -16,18 +16,19 @@
 
     <script type="text/javascript" src="{{URL::asset('js/jquery-3.2.1.js') }}"></script>
     <script type="text/javascript" src="{{URL::asset('js/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/jquery.sticky.js') }}"></script>
     <script type="text/javascript" src="{{URL::asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('js/main.js')}}"></script>
 
     <title>Hobby</title>
 </head>
-<body style="background: linear-gradient(to right, #251b01,#8a733b,#251b01);">
+<body style="background: #fff4d5;">
 
-<div class="container" style="background: linear-gradient(#3e2e06, #251b01 90%); border-radius: 0px 0px 15px 15px; margin-bottom: 15px; border: 4px  solid #1c1313; border-top: 0px;">
+<div class="container-fluid" id="sticky" style="background: linear-gradient(#3e2e06, #251b01 90%); border-radius: 0px; margin-bottom: 15px;border-top: 0px; z-index: 1000;">
     @include('front.navbar')
 </div>
 
-<div class="container" style="position: relative; padding-bottom: 30px; border: 4px  solid #1c1313; border-radius: 15px;">
+<div class="container" style="position: relative; padding-bottom: 30px; border-radius: 15px; margin-bottom: 30px;">
     <div class="col-xs-12" style="">
         @yield('content')
     </div>
@@ -36,5 +37,12 @@
 </body>
 </html>
 
+@yield('scripts')
+
+<script type="text/javascript">
+    $(document).ready( function() {
+        $("#sticky").sticky({topSpacing:0});
+    });
+</script>
 
 

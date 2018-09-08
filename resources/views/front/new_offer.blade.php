@@ -73,19 +73,19 @@
                                         <form class="form-horizontal"  method="post" accept-charset="UTF-8">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                                                <input type="text" class="form-control" name="username" maxlength="9" id-"login_id" placeholder="Username">
+                                                <input type="text" class="form-control" name="username" maxlength="9" placeholder="Username">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-                                                <input type="text" class="form-control" name="email" maxlength="9" id-"login_id" placeholder="Email">
+                                                <input type="text" class="form-control" name="email" maxlength="9" placeholder="Email">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-                                                <input type="text" class="form-control" name="password" maxlength="9" id-"login_id" placeholder="Password">
+                                                <input type="text" class="form-control" name="password" maxlength="9" placeholder="Password">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-                                                <input type="text" class="form-control" name="newid" maxlength="9" id-"login_id" placeholder="Confirm password">
+                                                <input type="text" class="form-control" name="newid" maxlength="9" placeholder="Confirm password">
                                             </div>
                                             <input class="btn btn-primary" type="submit" name="submit" value="Register" style="margin-top:10px; width:100%;"/>
                                         </form>
@@ -97,11 +97,11 @@
                                         <form class="form-horizontal"  method="post" accept-charset="UTF-8">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
-                                                <input type="text" class="form-control" name="username" maxlength="9" id-"login_id" placeholder="Username">
+                                                <input type="text" class="form-control" name="username" maxlength="9" placeholder="Username">
                                             </div>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
-                                                <input type="text" class="form-control" name="password" maxlength="9" id-"login_id" placeholder="Password">
+                                                <input type="text" class="form-control" name="password" maxlength="9" placeholder="Password">
                                             </div>
                                             <input class="btn btn-primary" type="submit" name="submit" value="Register" style="margin-top:10px; width:100%;"/>
                                         </form>
