@@ -84,7 +84,14 @@
                         <div style="float: right;">
                             <ul class="nav navbar-nav navbar" style="display: flex; align-items: center;">
                                 <li><a href="{{ route('new_items') }}" class="new_items">Nowości</a></li>
-                                <li><a href="">Kontakt</a></li>
+                                <li id="contact" style="position: relative;">
+                                    <a href="#">
+                                        Kontakt
+                                    </a>
+                                    <div id="contact-info" class="text-center" style="position: absolute; width: 250px; line-height: 35px; padding: 10px; display: none; left: -50px; background: linear-gradient(#251b01,#3e2e06 90%)">
+                                        <span style="font-weight: 600; color: white;">lukasz_111@gazeta.pl</span>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                 </nav>
@@ -101,5 +108,11 @@
         }, function() {
             $(this).children('.dropdown-menu', this).stop( true, true ).delay(300).slideUp("fast");
             $(this).removeClass('open');
+        });
+
+        $("#contact").hover( function() {
+            $("#contact-info").slideDown(500);
+        }, function() {
+            $("#contact-info").slideUp(500);
         });
     </script>
