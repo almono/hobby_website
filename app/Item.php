@@ -25,16 +25,20 @@ class Item extends Model
         $now = Carbon::now()->timestamp;
 
         $file1 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-1" . $now . ".jpg";
-        $file2 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-2" . $now . ".jpg";
 
         $item->img_orient_front = $params['zdjecie_orientacja_front'];
         $item->img_orient_back = $params['zdjecie_orientacja_back'];
 
         $item->img_front = $file1;
-        $item->img_back = $file2;
 
         $params['zdjecie_przod']->move(public_path() . "\img\\",$file1);
-        $params['zdjecie_tyl']->move(public_path() . "\img\\",$file2);
+
+        if(isset($params['zdjecie_tyl']) && !is_null($params['zdjecie_tyl']))
+        {
+            $file2 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-2" . $now . ".jpg";
+            $params['zdjecie_tyl']->move(public_path() . "\img\\",$file2);
+            $item->img_back = $file2;
+        }
 
         try {
             $item->save();
