@@ -86,6 +86,7 @@ class Item extends Model
 
         if($sort) {
             $query->where('slug','like','%'. str_slug($sort) .'%');
+            $query->orderBy('year','ASC');
         }
 
         return $query;
@@ -96,6 +97,7 @@ class Item extends Model
 
         if($sort) {
             $query->where('slug','like','%'. str_slug($sort) .'%');
+            $query->orderBy('year','ASC');
         }
 
         return $query;
