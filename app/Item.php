@@ -96,7 +96,7 @@ class Item extends Model
     public static function scopeCustomSlug($query, $sort) {
 
         if($sort) {
-            $query->where('slug','like','%'. str_slug($sort) .'%');
+            $query->where('slug', str_slug($sort) );
             $query->orderBy('year','ASC');
         }
 

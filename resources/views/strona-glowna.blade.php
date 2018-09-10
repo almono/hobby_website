@@ -35,11 +35,30 @@
         <div class="col-xs-12 text-left" style="border-bottom: 1px solid black; padding-bottom: 10px;">
             <span class="show_polish" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kalendarzyki polskie według grup</span>
         </div>
-        <div class="col-xs-12" id="polish" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
-            @if(isset($items_pl) && !is_null($items_pl))
-                @foreach($items_pl as $ip)
+        <div class="col-xs-12" id="polish" style="padding: 10px 0px;" hidden>
+            <span class="show_polish_kolej col-xs-12 text-left" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kolej</span>
+            <span class="show_polish_komunikacja col-xs-12 text-left" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Komunikacja miejska</span>
+        </div>
+        <div class="col-xs-12" id="polish_kolej" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
+            <span class="col-xs-12 text-center" style="font-weight: 600; padding-bottom: 10px;">
+                Kolej
+            </span>
+            @if(isset($items_pl_kolej) && !is_null($items_pl_kolej))
+                @foreach($items_pl_kolej as $ip)
                     <div class="col-xs-12 text-left">
-                        <a href="{{route('show_items', ['category' => $ip->category_id, 'sort' => 'custom-slug', 'custom_slug' => $ip->slug ])}}">{{ $ip->name }}<span style="font-weight: 600; margin-right: 3px;">({{ $ip->countItems($ip->name) }})</span></a>
+                        <a href="{{route('show_items', ['category' => $ip->category_id, 'sort' => 'custom-slug', 'custom_slug' => $ip->name ])}}">{{ $ip->name }}<span style="font-weight: 600; margin-right: 3px;">({{ $ip->countItems($ip->name) }})</span></a>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        <div class="col-xs-12" id="polish_komunikacja" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
+            <span class="col-xs-12 text-center" style="font-weight: 600; padding-bottom: 10px;">
+                Komunikacja miejska
+            </span>
+            @if(isset($items_pl_komunikacja) && !is_null($items_pl_komunikacja))
+                @foreach($items_pl_komunikacja as $ip)
+                    <div class="col-xs-12 text-left">
+                        <a href="{{route('show_items', ['category' => $ip->category_id, 'sort' => 'custom-slug', 'custom_slug' => $ip->name ])}}">{{ $ip->name }}<span style="font-weight: 600; margin-right: 3px;">({{ $ip->countItems($ip->name) }})</span></a>
                     </div>
                 @endforeach
             @endif
@@ -105,11 +124,33 @@
         });
 
         $(".show_polish").on('click', function() {
+            $("#polish_kolej").hide();
+            $("#polish_komunikacja").hide();
             if($("#polish").is(":visible")) {
                 $("#polish").slideUp(500);
             }
             else {
                 $("#polish").slideDown(500);
+            }
+
+        });
+
+        $(".show_polish_kolej").on('click', function() {
+            if($("#polish_kolej").is(":visible")) {
+                $("#polish_kolej").slideUp(400);
+            }
+            else {
+                $("#polish_kolej").slideDown(400);
+            }
+
+        });
+
+        $(".show_polish_komunikacja").on('click', function() {
+            if($("#polish_komunikacja").is(":visible")) {
+                $("#polish_komunikacja").slideUp(400);
+            }
+            else {
+                $("#polish_komunikacja").slideDown(400);
             }
 
         });

@@ -11,12 +11,13 @@ class MainpageController extends Controller
 {
   public function index() {
 
-      $items_pl = Item::where("category_id","1")->groupBy('name')->havingRaw("COUNT(name) > 1")->get();
+      $items_pl_kolej = Item::where("category_id","1")->where('subcategory','Kolej')->groupBy('name')->havingRaw("COUNT(name) > 1")->get();
+      $items_pl_komunikacja = Item::where("category_id","1")->where('subcategory','Komunikacja miejska')->groupBy('name')->havingRaw("COUNT(name) > 1")->get();
       $items_other_groups = Item::where("category_id","2")->groupBy('name')->get();
       $items_other_coutries = \DB::table('item')->selectRaw('country, count(*) as total')->where('country','!=','')->groupBy('country')->get(); //dd($items_other_coutries);
       //$items_other_coutries = Item::where("category_id","2")->where("country","!=","")->groupBy("country")->get(); dd($items_other_coutries);
 
-      return view('strona-glowna',['items_pl' => $items_pl, 'items_other' => $items_other_groups, 'items_countries' => $items_other_coutries]);
+      return view('strona-glowna',['items_pl_kolej' => $items_pl_kolej, 'items_pl_komunikacja' => $items_pl_komunikacja, 'items_other' => $items_other_groups, 'items_countries' => $items_other_coutries]);
   }
 
     public function login_form() {
