@@ -32,10 +32,7 @@
         <div class="col-xs-12" style="margin-bottom: 20px; font-size: 24px;">
             Kalendarzyki polskie
         </div>
-        <div class="col-xs-12 text-left" style="border-bottom: 1px solid black; padding-bottom: 10px;">
-            <span class="show_polish" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kalendarzyki polskie według grup</span>
-        </div>
-        <div class="col-xs-12" id="polish" style="padding: 10px 0px;" hidden>
+        <div class="col-xs-12" id="polish" style="padding: 0px 0px 10px 0px;">
             <span class="show_polish_kolej col-xs-12 text-left" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kolej</span>
             <span class="show_polish_komunikacja col-xs-12 text-left" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Komunikacja miejska</span>
         </div>
@@ -119,18 +116,6 @@
             }
             else {
                 $("#countries").slideDown(500);
-            }
-
-        });
-
-        $(".show_polish").on('click', function() {
-            $("#polish_kolej").hide();
-            $("#polish_komunikacja").hide();
-            if($("#polish").is(":visible")) {
-                $("#polish").slideUp(500);
-            }
-            else {
-                $("#polish").slideDown(500);
             }
 
         });

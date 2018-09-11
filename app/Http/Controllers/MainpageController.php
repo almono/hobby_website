@@ -11,8 +11,8 @@ class MainpageController extends Controller
 {
   public function index() {
 
-      $items_pl_kolej = Item::where("category_id","1")->where('subcategory','Kolej')->groupBy('name')->havingRaw("COUNT(name) > 1")->get();
-      $items_pl_komunikacja = Item::where("category_id","1")->where('subcategory','Komunikacja miejska')->groupBy('name')->havingRaw("COUNT(name) > 1")->get();
+      $items_pl_kolej = Item::where("category_id","1")->where('subcategory','Kolej')->groupBy('name')->get();
+      $items_pl_komunikacja = Item::where("category_id","1")->where('subcategory','Komunikacja miejska')->groupBy('name')->get();
       $items_other_groups = Item::where("category_id","2")->groupBy('name')->get();
       $items_other_coutries = \DB::table('item')->selectRaw('country, count(*) as total')->where('country','!=','')->groupBy('country')->get(); //dd($items_other_coutries);
       //$items_other_coutries = Item::where("category_id","2")->where("country","!=","")->groupBy("country")->get(); dd($items_other_coutries);
