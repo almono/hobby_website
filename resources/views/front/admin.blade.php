@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/select2.min.css') }}">
 
     <script type="text/javascript" src="{{URL::asset('js/jquery-3.2.1.js') }}"></script>
     <script type="text/javascript" src="{{URL::asset('js/jquery-ui.js') }}"></script>
     <script type="text/javascript" src="{{URL::asset('js/bootstrap.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('js/main.js')}}"></script>
+    <script type="text/javascript" src="{{URL::asset('js/select2.min.js')}}"></script>
 
     <title>Hobby</title>
 </head>
@@ -56,6 +58,8 @@
 </div>
 </body>
 </html>
+
+@yield('admin-scripts')
 
 <script>
     $('div.alert').not('.alert-important').delay(1500).fadeOut(350);

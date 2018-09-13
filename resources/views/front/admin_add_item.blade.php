@@ -6,7 +6,12 @@
             <div class="col-xs-offset-3 col-xs-6 text-center" style="margin-top: 20px;">
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Nazwa</span>
-                    <input class="form-control admin_input" id="nazwa" placeholder="nazwa przedmiotu" aria-describedby="basic-addon2" name="nazwa" type="text" required>
+                    <select class="form-control admin_input name-tags"  id="nazwa" placeholder="nazwa przedmiotu" aria-describedby="basic-addon2" name="nazwa" type="text" required>
+                        <option selected="selected"></option>
+                        @foreach($item_names as $i)
+                            <option value="{{ $i->name }}">{{ $i->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Rocznik</span>
@@ -60,4 +65,13 @@
         {{Form::close()}}
     </div>
 
+@stop
+@section('admin-scripts')
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $(".name-tags").select2({
+                tags: true
+            });
+        });
+    </script>
 @stop

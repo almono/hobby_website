@@ -70,8 +70,9 @@ class ItemController extends Controller
 
     public function new_item_view() {
         if (Auth::check()) {
+            $item_names = Item::groupBy('name')->select('name')->get();
             $categories = Category::get(); //dd($categories);
-            return view('front.admin_add_item', ['categories' => $categories]);
+            return view('front.admin_add_item', ['categories' => $categories, 'item_names' => $item_names]);
         }
         else {
             return redirect('home');

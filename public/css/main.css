@@ -306,6 +306,35 @@ input[type=file] {
     z-index: 1000 !important;
 }
 
+.select2-selection {
+    background-color: black !important;
+    color: white !important;
+}
+
+.select2-search__field {
+    background-color: black !important;
+    color: white !important;
+}
+
+.select2-results__option {
+    background-color: black !important;
+    color: white !important;
+}
+
+.select2-results__option:hover {
+    background-color: grey !important;
+    color: white !important;
+}
+
+.select2-selection__rendered {
+    color: white !important;
+}
+
+
+.select2-search--dropdown {
+    background-color: black !important;
+    color: white !important;
+}
 
 @media (max-width: 991px) {
     .navbar-header {
