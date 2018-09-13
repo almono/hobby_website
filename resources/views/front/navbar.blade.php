@@ -34,11 +34,8 @@
                                                 </ul>
                                             </li>
                                             <li class="dropdown-submenu">
-                                                <a href="#">Podkategoria<i class="caret"></i></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="{{url('/category/1?sort_subcategory=Kolej')}}">Kolej</a></li>
-                                                    <li><a href="{{url('/category/1?sort_subcategory=Miejska')}}">Komunikacja miejska</a></li>
-                                                </ul>
+                                                <li><a href="{{url('/category/1?sort_subcategory=Kolej')}}">Kolej</a></li>
+                                                <li><a href="{{url('/category/1?sort_subcategory=Miejska')}}">Komunikacja miejska</a></li>
                                             </li>
                                         </ul>
                                     </div>
@@ -62,11 +59,8 @@
                                                 </ul>
                                             </li>
                                             <li class="dropdown-submenu">
-                                                <a href="#">Podkategoria<i class="caret"></i></a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="{{url('/category/2?sort_subcategory=Kolej')}}">Kolej</a></li>
-                                                    <li><a href="{{url('/category/2?sort_subcategory=Miejska')}}">Komunikacja miejska</a></li>
-                                                </ul>
+                                                <li><a href="{{url('/category/2?sort_subcategory=Kolej')}}">Kolej</a></li>
+                                                <li><a href="{{url('/category/2?sort_subcategory=Miejska')}}">Komunikacja miejska</a></li>
                                             </li>
                                         </ul>
                                     </div>
