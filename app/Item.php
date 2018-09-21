@@ -22,6 +22,15 @@ class Item extends Model
         $item->category_id = $params['kategoria'];
         $item->subcategory = $params['podkategoria'];
 
+        if(isset($params['exchange']) && !is_null($params['exchange']))
+        {
+            $item->exchange = 1;
+        }
+        else
+        {
+            $item->exchange = 0;
+        }
+
         $now = Carbon::now()->timestamp;
 
         $file1 = str_slug($params['nazwa']) . "-" . $params['rok'] . "-" . $params['kategoria'] . "-1" . $now . ".jpg";

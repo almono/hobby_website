@@ -77,6 +77,7 @@
                         </div>
                         <div style="float: right;">
                             <ul class="nav navbar-nav navbar" style="display: flex; align-items: center;">
+                                <li><a href="{{ route('exchange_items') }}" class="new_items">Do wymiany</a></li>
                                 <li><a href="{{ route('new_items') }}" class="new_items">Nowości</a></li>
                                 <li id="contact" style="position: relative;">
                                     <a href="#">

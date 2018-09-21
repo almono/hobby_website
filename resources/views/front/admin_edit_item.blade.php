@@ -14,8 +14,8 @@
                     <span class="form-control admin_input">{{$item->name}}</span>
                 </div>
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
-                    <span class="input-group-addon admin_span" id="basic-addon2">Miasto</span>
-                    <span class="form-control admin_input">{{$item->city}}</span>
+                    <span class="input-group-addon admin_span" id="basic-addon2">Państwo</span>
+                    <span class="form-control admin_input">{{$item->country}}</span>
                 </div>
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Rocznik</span>
@@ -50,11 +50,12 @@
                 <b style="color:white; font-size: 24px;">Nowe dane</b>
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Nazwa</span>
-                    {{ Form::text('new_name','',['class' => 'form-control admin_input']) }}
-                </div>
-                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
-                    <span class="input-group-addon admin_span" id="basic-addon2">Miasto</span>
-                    {{ Form::text('new_city','',['class' => 'form-control admin_input']) }}
+                    <select class="form-control admin_input name-tags"  id="new_name" placeholder="nazwa przedmiotu" aria-describedby="basic-addon2" name="new_name" type="text" required>
+                        <option selected="selected"></option>
+                        @foreach($item_names as $i)
+                            <option value="{{ $i->name }}">{{ $i->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-xs-12 input-group form_margin" style="width: 100%;">
                     <span class="input-group-addon admin_span" id="basic-addon2">Państwo</span>
@@ -93,7 +94,10 @@
                         <option value="0" @if($item->img_orient_back == 0) selected @endif>Pionowa</option>
                     </select>
                 </div>
-                {{ Form::checkbox('active','1',true) }} <b style="color:white;">Czy aktywny?</b>
+                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
+                    <input type="checkbox" name="exchange" value="1" @if($item->exchange == '1') checked="checked" @endif>
+                    <b style="color: white;">Do wymiany</b>
+                </div>
                 <br><br>
                 {{ Form::submit('Zapisz',['class' => 'btn btn-info', 'style' => 'width: 150px;']) }}
             </div>
@@ -101,4 +105,13 @@
             </div>
     </div>
 
+@stop
+@section('admin-scripts')
+    <script type="text/javascript">
+        $(document).ready( function() {
+            $(".name-tags").select2({
+                tags: true
+            });
+        });
+    </script>
 @stop

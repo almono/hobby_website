@@ -13,11 +13,21 @@ class MainpageController extends Controller
 
       $items_pl_kolej = Item::where("category_id","1")->where('subcategory','Kolej')->groupBy('name')->get();
       $items_pl_komunikacja = Item::where("category_id","1")->where('subcategory','Komunikacja miejska')->groupBy('name')->get();
-      $items_other_groups = Item::where("category_id","2")->groupBy('name')->get();
-      $items_other_coutries = \DB::table('item')->selectRaw('country, count(*) as total')->where('country','!=','')->groupBy('country')->get(); //dd($items_other_coutries);
+      $items_other_groups_kolej = Item::where("category_id","2")->where('subcategory','Kolej')->groupBy('name')->get();
+      $items_other_groups_komunikacja = Item::where("category_id","2")->where('subcategory','Komunikacja miejska')->groupBy('name')->get();
+      $items_other_coutries = \DB::table('item')->selectRaw('country, count(*) as total')->where('country','!=','')->groupBy('country')->get();
       //$items_other_coutries = Item::where("category_id","2")->where("country","!=","")->groupBy("country")->get(); dd($items_other_coutries);
 
-      return view('strona-glowna',['items_pl_kolej' => $items_pl_kolej, 'items_pl_komunikacja' => $items_pl_komunikacja, 'items_other' => $items_other_groups, 'items_countries' => $items_other_coutries]);
+      $calendars_pl = Item::where('category_id','1')->count();
+      $calendars_other = Item::where('category_id','2')->count();
+
+      return view('strona-glowna',
+          ['items_pl_kolej' => $items_pl_kolej, 'items_pl_komunikacja' => $items_pl_komunikacja,
+              'items_other_groups_kolej' => $items_other_groups_kolej, 'items_other_groups_komunikacja' => $items_other_groups_komunikacja,
+              'items_countries' => $items_other_coutries,
+              'calendars_pl' => $calendars_pl,
+              'calendars_other' => $calendars_other
+          ]);
   }
 
     public function login_form() {

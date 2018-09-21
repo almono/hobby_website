@@ -1,47 +1,52 @@
 @extends('app')
 @section('content')
 
-<div class="col-xs-12 col-md-12">
-    <div class="col-xs-12" style="border: 1px black solid; border-radius: 0px; margin-top: 15px; margin-bottom: 15px; color: #CEBCED; padding-top: 10px; padding-bottom: 10px;">
-        @if(isset($category) && !is_null($category))
-            <form action="{{url("category/$category")}}">
-                <b style="color: black;">Sortowanie:</b>
-                <select name="sort" id="sort" class="form-control" style="width: 150px; display: inline-block; margin-left: 5px; margin-right: 5px;">
-                    <option selected>Wybierz opcje</option>
-                    <option value="nazwa-asc">Nazwa A-Z</option>
-                    <option value="nazwa-desc">Nazwa Z-A</option>
-                    <!--
-                    <option value="rocznik-asc">Rocznik rosnąco</option>
-                    <option value="rocznik-desc">Rocznik malejąco</option>
-                    -->
-                    <option value="custom-year">Rok</option>
+<div class="col-xs-12 col-md-12" style="padding-top: 20px;">
+    @if(isset($category) && !is_null($category))
+        <div class="col-xs-12" style="border: 1px black solid; border-radius: 0px; margin-top: 15px; margin-bottom: 15px; color: #CEBCED; padding-top: 10px; padding-bottom: 10px;">
+                <form action="{{url("category/$category")}}">
+                    <b style="color: black;">Sortowanie:</b>
+                    <select name="sort" id="sort" class="form-control" style="width: 150px; display: inline-block; margin-left: 5px; margin-right: 5px;">
+                        <option selected>Wybierz opcje</option>
+                        <option value="nazwa-asc">Nazwa A-Z</option>
+                        <option value="nazwa-desc">Nazwa Z-A</option>
+                        <!--
+                        <option value="rocznik-asc">Rocznik rosnąco</option>
+                        <option value="rocznik-desc">Rocznik malejąco</option>
+                        -->
+                        <option value="custom-year">Rok</option>
 
-                    <option value="custom-name">Nazwa</option>
+                        <option value="custom-name">Nazwa</option>
+                        <!--
+                        <option value="custom-town">Miasto</option>
+                        -->
+                        <option value="custom-country">Państwo</option>
+                    </select>
+                    <input type="text" class="form-control" name="custom_year" id="custom_year" style="display:none; width: 150px;">
+                    <input type="text" class="form-control" name="custom_name" id="custom_name" style="display:none; width: 150px;">
                     <!--
-                    <option value="custom-town">Miasto</option>
+                    <input type="text" class="form-control" name="custom_town" id="custom_town" style="display:none; width: 150px;">
                     -->
-                    <option value="custom-country">Państwo</option>
-                </select>
-                <input type="text" class="form-control" name="custom_year" id="custom_year" style="display:none; width: 150px;">
-                <input type="text" class="form-control" name="custom_name" id="custom_name" style="display:none; width: 150px;">
-                <!--
-                <input type="text" class="form-control" name="custom_town" id="custom_town" style="display:none; width: 150px;">
-                -->
-                <input type="text" class="form-control" name="custom_country" id="custom_country" style="display:none; width: 150px;">
-                <input type="hidden" name="category_id" value="{{$category}}">
-                <select name="sort_subcategory" id="sort_subcategory" class="form-control" style="width: 200px; display: inline-block; margin-left: 5px; margin-right: 5px;">
-                    <option value="Kolej">Kolej</option>
-                    <option value="Miejska">Komunikacja miejska</option>
-                </select>
-                <input type="submit" class="btn btn-info" value="Sortuj">
+                    <input type="text" class="form-control" name="custom_country" id="custom_country" style="display:none; width: 150px;">
+                    <input type="hidden" name="category_id" value="{{$category}}">
+                    <select name="sort_subcategory" id="sort_subcategory" class="form-control" style="width: 200px; display: inline-block; margin-left: 5px; margin-right: 5px;">
+                        <option value="Kolej">Kolej</option>
+                        <option value="Miejska">Komunikacja miejska</option>
+                    </select>
+                    <input type="submit" class="btn btn-info" value="Sortuj">
 
-            </form>
-            @endif
-    </div>
+                </form>
+
+        </div>
+    @endif
         @if(Request::has('custom_name'))
             <div class="col-xs-12 text-center">
                 <span style="font-size: 28px;">{{ Request::get('custom_name') }}</span>
             </div>
+        @elseif(isset($title) && !is_null($title))
+        <div class="col-xs-12 text-center">
+            <span style="font-size: 28px;">{{ $title }}</span>
+        </div>
         @endif
         @foreach($items as $i)
             @if(isset($i->img_front) && !is_null($i->img_front))
@@ -59,14 +64,18 @@
                                     </div>
                                 </div>
                         </div>
-                        <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important;" hidden>{{$i->name}}</div>
+                        @if($title = 'Do wymiany' && Request::path() == 'exchange_items')
+                            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important; font-weight: 600;">{{$i->id}}</div>
+                        @endif
                     </div>
                 @else
                     <div class="col-md-4" style="padding: 15px;">
                         <div class="" style="height: 325px; width: 100%;">
                             <img class="col-md-12" src="{{ asset("img/$i->img_front")}}" alt="front" @if($i->img_orient_front == 1) style="height: 100%; padding-top: 50px; padding-bottom: 50px;" @else style="height: 100%; padding-left: 50px; padding-right: 50px;" @endif>
                         </div>
-                        <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important;" hidden>{{$i->name}}</div>
+                        @if($title = 'Do wymiany' && Request::path() == 'exchange_items')
+                            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important; font-weight: 600;">{{$i->id}}</div>
+                        @endif
                     </div>
                 @endif
             @endif

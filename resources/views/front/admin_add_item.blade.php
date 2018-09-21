@@ -57,6 +57,7 @@
                     <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja_back" checked value="1">Zdjęcie poziome</label>
                     <label style="border: 1px white solid; border-radius: 5px; padding: 10px;"><input type="radio" name="zdjecie_orientacja_back" value="0">Zdjęcie pionowe</label>
                 </div>
+                {{ Form::checkbox('exchange','1',false) }} <b style="color:white;">Do wymiany?</b>
             </div>
 
             <div class="col-xs-12 text-center" style="margin: auto; margin-top: 30px">

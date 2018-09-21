@@ -108,8 +108,9 @@ class ItemController extends Controller
 
     public function edit_item($id) {
         $item = Item::where('id',$id)->with('category')->firstOrFail(); //dd(File::exists(storage_path() . "\zdjecia\\" . "test-1000-2.jpg"));
+        $item_names = Item::groupBy('name')->select('name')->get();
         $categories = Category::get();
-        return view('front.admin_edit_item',['item' => $item, 'categories' => $categories]);
+        return view('front.admin_edit_item',['item' => $item, 'categories' => $categories, 'item_names' => $item_names ]);
     }
 
     public function update_item(Request $request) {
@@ -131,6 +132,13 @@ class ItemController extends Controller
         if (isset($input['new_country']) && $input['new_country'] != '') {
             $item->country = $input['new_country'];
         }
+        if (isset($input['exchange']) && $input['exchange'] != '') {
+            $item->exchange = '1';
+        }
+        else
+        {
+            $item->exchange = '0';
+        }
 
         $item->category_id = $input['kategoria'];
         $item->subcategory = $input['new_subcat'];
@@ -151,7 +159,7 @@ class ItemController extends Controller
 
     public function admin_show_items()
     {
-        $items = Item::byFilter($this->sort)->customYear($this->year)->customName($this->name)->customTown($this->town)->podkategoria($this->subcategory)->get();
+        $items = Item::byFilter($this->sort)->customYear($this->year)->customName($this->name)->customCountry($this->country)->podkategoria($this->subcategory)->orderBy('created_at','DESC')->get();
 
         return view('front.admin_view_items',['items' => $items]);
     }
@@ -166,7 +174,7 @@ class ItemController extends Controller
                 ->customCountry($this->country)
                 ->customSlug($this->slug)
                 ->podkategoria($this->subcategory)
-                ->customYear2($this->start_year,$this->end_year)->where('category_id','=',$category)->where('active','=','1')->orderBy('year','ASC')->paginate(18);
+                ->customYear2($this->start_year,$this->end_year)->where('category_id','=',$category)->orderBy('year','ASC')->paginate(18);
         }
         else {
             $items = Item::byFilter($this->sort)
@@ -176,23 +184,29 @@ class ItemController extends Controller
                 ->customCountry($this->country)
                 ->customSlug($this->slug)
                 ->podkategoria($this->subcategory)
-                ->customYear2($this->start_year,$this->end_year)->where('active','=','1')->orderBy('year','ASC')->paginate(18);
+                ->customYear2($this->start_year,$this->end_year)->orderBy('year','ASC')->paginate(18);
         }
         return view('front.offer_list',['items' => $items, 'category' => $category]);
     }
 
     public function show_items_name($category,$name)
     {
-        $items = Item::where('active','=','1')->where('category_id',$category)->where("slug",$name)->orderBy('year','ASC')->paginate(18);
+        $items = Item::where('category_id',$category)->where("slug",$name)->orderBy('year','ASC')->paginate(18);
 
         return view('front.offer_list',['items' => $items, 'category' => $category]);
     }
 
     public function show_new_items()
     {
-        $items = Item::where('active','1')->orderBy('created_at','DESC')->take(18)->get();
+        $items = Item::orderBy('created_at','DESC')->take(18)->get();
 
-        return view('front.offer_list',['items' => $items]);
+        return view('front.offer_list',['items' => $items, 'title' => 'Nowości']);
     }
 
+    public function show_exchange_items()
+    {
+        $items = Item::where('exchange','1')->orderBy('created_at','DESC')->take(18)->get();
+
+        return view('front.offer_list',['items' => $items, 'title' => 'Do wymiany']);
+    }
 }

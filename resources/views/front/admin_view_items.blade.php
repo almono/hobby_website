@@ -16,10 +16,10 @@
                     <option value="rocznik-asc">Rocznik rosnąco</option>
                     <option value="rocznik-desc">Rocznik malejąco</option>
                     <option value="custom-year">Rok</option>
-                    <option value="custom-town">Miasto</option>
+                    <option value="custom-country">Państwo</option>
                 </select>
                 <input type="text" class="form-control" name="custom_year" id="custom_year" style="display:none; width: 150px;">
-                <input type="text" class="form-control" name="custom_town" id="custom_town" style="display:none; width: 150px;">
+                <input type="text" class="form-control" name="custom_country" id="custom_country" style="display:none; width: 150px;">
             <select name="sort_subcategory" id="sort_subcategory" class="form-control" style="width: 200px; display: inline-block; margin-left: 5px; margin-right: 5px;">
                 <option value="Kolej">Kolej</option>
                 <option value="Miejska">Komunikacja miejska</option>
@@ -33,14 +33,14 @@
                     <b class="col-xs-2 admin-text" style="max-width: 250px;">Zdjecie 1</b>
                     <b class="col-xs-2 admin-text" style="max-width: 250px;">Zdjecie 2</b>
                     <b class="col-xs-2 admin-text">Nazwa</b>
-                    <b class="col-xs-1 admin-text">Miasto</b>
+                    <b class="col-xs-1 admin-text">Państwo</b>
                     <b class="col-xs-1 admin-text">Rocznik</b>
                     <b class="col-xs-2 admin-text">Kategoria</b>
                     <div style="margin-top: 40px;">
                         <img class="col-xs-2 view_item_img" src="{{ asset("img/$item->img_front")}}" alt="front" style="margin-bottom: 5px;">
                         <img class="col-xs-2 view_item_img" src="{{ asset("img/$item->img_back")}}" alt="front" style="margin-bottom: 5px;">
                         <span class="col-xs-2 admin-text" style="margin-top: 50px;">{{$item->name}}</span>
-                        <span class="col-xs-1 admin-text" style="margin-top: 50px;">{{$item->city}}</span>
+                        <span class="col-xs-1 admin-text" style="margin-top: 50px;">{{$item->country}}</span>
                         <span class="col-xs-1 admin-text" style="margin-top: 50px;">{{$item->year}}</span>
                         <span class="col-xs-2 admin-text" style="margin-top: 50px;">{{$item->category->name}}</span>
                         <div class="col-xs-2" style="margin-top: 45px; padding: 0px;">
@@ -80,14 +80,14 @@
             $("#custom_year").show();
             $("#custom_year").css("display","inline-block");
         }
-        else if ( value == 'custom-town'){
+        else if ( value == 'custom-country'){
             $("#custom_year").hide();
-            $("#custom_town").show();
-            $("#custom_town").css("display","inline-block");
+            $("#custom_country").show();
+            $("#custom_country").css("display","inline-block");
         }
         else {
             $("#custom_year").hide();
-            $("#custom_town").hide();
+            $("#custom_country").hide();
         }
 
         $('#sort').change(function(){
@@ -99,14 +99,14 @@
                 $("#custom_year").show();
                 $("#custom_year").css("display","inline-block");
             }
-            else if ( value == 'custom-town'){
+            else if ( value == 'custom-country'){
                 $("#custom_year").hide();
-                $("#custom_town").show();
-                $("#custom_town").css("display","inline-block");
+                $("#custom_country").show();
+                $("#custom_country").css("display","inline-block");
             }
             else {
                 $("#custom_year").hide();
-                $("#custom_town").hide();
+                $("#custom_country").hide();
             }
 
         });
