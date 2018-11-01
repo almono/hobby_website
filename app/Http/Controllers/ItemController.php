@@ -13,6 +13,7 @@ use App\User;
 use App\Item;
 use App\Category;
 use Mockery\Exception;
+use Carbon\Carbon;
 use Session;
 use Validator;
 use File;
@@ -118,6 +119,35 @@ class ItemController extends Controller
         $input = Request::all();
         $item = Item::findorFail($input['id']);
 
+        $now = Carbon::now()->timestamp;
+
+        if(isset($input['zdjecie_przod']) && !is_null($input['zdjecie_przod']))
+        {
+            if(file_exists(public_path() . "\img\\" . $item->img_front))
+            {
+                unlink(public_path() . "\img\\" . $item->img_front);
+            }
+
+            $file1 = str_slug($item->name) . "-" . $item->year . "-" . $item->category_id . "-1" . $now . ".jpg";
+            $input['zdjecie_przod']->move(public_path() . "\img\\",$file1);
+            $item->img_front = $file1;
+        }
+        if(isset($input['zdjecie_tyl']) && !is_null($input['zdjecie_tyl']))
+        {
+            if(file_exists(public_path() . "\img\\" . $item->img_back))
+            {
+                unlink(public_path() . "\img\\" . $item->img_back);
+            }
+
+            $file2 = str_slug($item->name) . "-" . $item->year . "-" . $item->category_id . "-2" . $now . ".jpg";
+            $input['zdjecie_tyl']->move(public_path() . "\img\\",$file2);
+            $item->img_back = $file2;
+        }
+
+
+
+
+
         if (isset($input['new_name']) && $input['new_name'] != '') {
             $item->name = $input['new_name'];
             $item->slug = str_slug($input['new_name']);
@@ -145,6 +175,8 @@ class ItemController extends Controller
 
         $item->img_orient_front = $input['new_orient_front'];
         $item->img_orient_back = $input['new_orient_back'];
+
+
 
         try {
             $item->save();

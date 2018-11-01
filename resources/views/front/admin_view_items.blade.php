@@ -11,15 +11,19 @@
                 <b>Sortowanie:</b>
                 <select name="sort" id="sort" class="form-control" style="width: 150px; display: inline-block; margin-left: 5px; margin-right: 5px;">
                     <option selected>Wybierz opcje</option>
+                    <?php /*
                     <option value="nazwa-asc">Nazwa A-Z</option>
                     <option value="nazwa-desc">Nazwa Z-A</option>
                     <option value="rocznik-asc">Rocznik rosnąco</option>
                     <option value="rocznik-desc">Rocznik malejąco</option>
+ */ ?>
                     <option value="custom-year">Rok</option>
                     <option value="custom-country">Państwo</option>
+                    <option value="custom-name">Nazwa</option>
                 </select>
                 <input type="text" class="form-control" name="custom_year" id="custom_year" style="display:none; width: 150px;">
                 <input type="text" class="form-control" name="custom_country" id="custom_country" style="display:none; width: 150px;">
+                <input type="text" class="form-control" name="custom_name" id="custom_name" style="display:none; width: 150px;">
             <select name="sort_subcategory" id="sort_subcategory" class="form-control" style="width: 200px; display: inline-block; margin-left: 5px; margin-right: 5px;">
                 <option value="Kolej">Kolej</option>
                 <option value="Miejska">Komunikacja miejska</option>
@@ -77,15 +81,25 @@
         var value = $('#sort').children(":selected").val(); console.log(value);
 
         if ( value == 'custom-year') {
+            $("#custom_name").hide()
+            $("#custom_country").hide()
             $("#custom_year").show();
             $("#custom_year").css("display","inline-block");
         }
         else if ( value == 'custom-country'){
             $("#custom_year").hide();
+            $("#custom_name").hide()
             $("#custom_country").show();
             $("#custom_country").css("display","inline-block");
         }
+        else if ( value == 'custom-name'){
+            $("#custom_year").hide();
+            $("#custom_country").hide();
+            $("#custom_name").show();
+            $("#custom_name").css("display","inline-block");
+        }
         else {
+            $("#custom_name").hide()
             $("#custom_year").hide();
             $("#custom_country").hide();
         }
@@ -96,15 +110,25 @@
             console.log(value);
 
             if ( value == 'custom-year') {
+                $("#custom_name").hide()
+                $("#custom_country").hide()
                 $("#custom_year").show();
                 $("#custom_year").css("display","inline-block");
             }
             else if ( value == 'custom-country'){
                 $("#custom_year").hide();
+                $("#custom_name").hide()
                 $("#custom_country").show();
                 $("#custom_country").css("display","inline-block");
             }
+            else if ( value == 'custom-name'){
+                $("#custom_year").hide();
+                $("#custom_country").hide();
+                $("#custom_name").show();
+                $("#custom_name").css("display","inline-block");
+            }
             else {
+                $("#custom_name").hide()
                 $("#custom_year").hide();
                 $("#custom_country").hide();
             }

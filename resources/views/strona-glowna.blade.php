@@ -35,7 +35,7 @@
     </div>
     <div class="col-xs-4" style="height: 100%; border-right: 1px solid black; border-left: 1px solid black; min-height: 1000px;">
         <div class="col-xs-12" style="margin-bottom: 20px; font-size: 22px;">
-            Kalendarzyki polskie({{$calendars_pl}})
+            Kalendarzyki polskie ({{$calendars_pl}})
         </div>
         <div class="col-xs-12" id="polish" style="padding: 0px 0px 10px 0px;">
             <span class="show_polish_kolej col-xs-12 text-left" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kolej</span>
@@ -68,7 +68,7 @@
     </div>
     <div class="col-xs-4" style="height: 100%;">
         <div class="col-xs-12" style="margin-bottom: 20px; font-size: 22px;">
-            Kalendarzyki zagraniczne({{$calendars_other}})
+            Kalendarzyki zagraniczne ({{$calendars_other}})
         </div>
         <div class="col-xs-12 text-left" style="border-bottom: 1px solid black; padding-bottom: 10px;">
             <span class="show_groups" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kalendarzyki zagraniczne według grup</span>

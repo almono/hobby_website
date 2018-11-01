@@ -17,10 +17,11 @@
                     <span class="input-group-addon admin_span" id="basic-addon2">Rocznik</span>
                     <input class="form-control admin_input" id="rok" placeholder="rocznik" aria-describedby="basic-addon2" name="rok" type="text" required>
                 </div>
+                <?php /*
                 <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Miasto</span>
                     <input class="form-control admin_input" id="miasto" placeholder="miasto" aria-describedby="basic-addon2" name="miasto" type="text">
-                </div>
+                </div> */ ?>
                 <div class="col-xs-12 input-group form_margin">
                     <span class="input-group-addon admin_span" id="basic-addon2">Państwo</span>
                     <input class="form-control admin_input" id="panstwo" placeholder="państwo" aria-describedby="basic-addon2" name="panstwo" type="text">

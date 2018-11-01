@@ -16,8 +16,8 @@ class Item extends Model
         $item->name = $params['nazwa'];
         $item->slug = str_slug($params['nazwa']);
         $item->country = $params['panstwo'];
-        $item->city = $params['miasto'];
-        $item->city_slug = str_slug($params['miasto']);
+        //$item->city = $params['miasto'];
+        //$item->city_slug = str_slug($params['miasto']);
         $item->year = $params['rok'];
         $item->category_id = $params['kategoria'];
         $item->subcategory = $params['podkategoria'];
