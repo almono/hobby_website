@@ -17,7 +17,6 @@
                                     Strona główna
                                 </a>
                                 <div class="dropdown">
-
                                     <div class="dropdown">
                                         <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => 1]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
                                             Kalendarzyki polskie
@@ -40,9 +39,7 @@
                                         </ul>
                                     </div>
                                 </div>
-
                                 <div class="dropdown">
-
                                     <div class="dropdown">
                                         <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => 2]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
                                             Kalendarzyki zagraniczne
@@ -77,14 +74,26 @@
                         </div>
                         <div style="float: right;">
                             <ul class="nav navbar-nav navbar" style="display: flex; align-items: center;">
-                                <li><a href="{{ route('exchange_items') }}" class="new_items">Do wymiany</a></li>
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle disabled" href="{{ route('exchange_items') }}" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                                        Do wymiany<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu multidropdown" aria-labelledby="dropdownMenu2">
+                                        <li class="dropdown-submenu">
+                                            <a href="{{ route('exchange_items', ['category' => '1']) }}">Polskie</a>
+                                        </li>
+                                        <li class="dropdown-submenu">
+                                            <a href="{{ route('exchange_items', ['category' => '2']) }}">Zagraniczne</a>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <li><a href="{{ route('new_items') }}" class="new_items">Nowości</a></li>
                                 <li id="contact" style="position: relative;">
                                     <a href="#">
                                         Kontakt
                                     </a>
-                                    <div id="contact-info" class="text-center" style="position: absolute; width: 250px; line-height: 35px; padding: 10px; display: none; left: -50px; background: linear-gradient(#251b01,#3e2e06 90%)">
-                                        <span style="font-weight: 600; color: white;">lukasz_111@gazeta.pl</span>
+                                    <div id="contact-info" class="text-center" style="position: absolute; width: 250px; line-height: 35px; padding: 10px; display: none; left: -50px; background: linear-gradient(#251b01,#3e2e06 90%); z-index: 11;">
+                                        <a href="mailto:lukasz_111@gazeta.pl" style="font-weight: 600; color: white;">lukasz_111@gazeta.pl</a>
                                     </div>
                                 </li>
                             </ul>
@@ -105,9 +114,7 @@
             $(this).removeClass('open');
         });
 
-        $("#contact").hover( function() {
-            $("#contact-info").slideDown(500);
-        }, function() {
-            $("#contact-info").slideUp(500);
+        $("#contact").click( function() {
+            $("#contact-info").slideToggle(300);
         });
     </script>

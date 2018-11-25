@@ -218,26 +218,50 @@ class ItemController extends Controller
                 ->podkategoria($this->subcategory)
                 ->customYear2($this->start_year,$this->end_year)->orderBy('year','ASC')->paginate(18);
         }
-        return view('front.offer_list',['items' => $items, 'category' => $category]);
+
+        if(isset($category) && !is_null($category)) {
+            $cat = Category::where('id',$category)->first();
+            $title = $cat['name'];
+        }
+        else {
+            $title = "Kolekcja";
+        }
+
+        return view('front.offer_list',['items' => $items, 'category' => $category, 'title' => $title]);
     }
 
     public function show_items_name($category,$name)
     {
         $items = Item::where('category_id',$category)->where("slug",$name)->orderBy('year','ASC')->paginate(18);
 
-        return view('front.offer_list',['items' => $items, 'category' => $category]);
+        if(isset($category) && !is_null($category)) {
+            $cat = Category::where('id',$category)->first();
+            $title = $cat['name'];
+        }
+        else {
+            $title = "Kolekcja";
+        }
+
+        return view('front.offer_list',['items' => $items, 'category' => $category, 'title' => $title]);
     }
 
     public function show_new_items()
     {
-        $items = Item::orderBy('created_at','DESC')->take(18)->get();
+        $items = Item::orderBy('created_at','DESC')->paginate(18);
 
         return view('front.offer_list',['items' => $items, 'title' => 'Nowości']);
     }
 
-    public function show_exchange_items()
+    public function show_exchange_items(Request $request)
     {
-        $items = Item::where('exchange','1')->orderBy('created_at','DESC')->take(18)->get();
+        $input = Request::all();
+        if(isset($input['category']) && !is_null($input['category']))
+        {
+            $items = Item::where('exchange','1')->where('category_id',$input['category'])->orderBy('created_at','DESC')->paginate(18);
+        }
+        else {
+            $items = Item::where('exchange','1')->orderBy('created_at','DESC')->paginate(18);
+        }
 
         return view('front.offer_list',['items' => $items, 'title' => 'Do wymiany']);
     }

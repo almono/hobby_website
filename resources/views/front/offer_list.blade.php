@@ -82,7 +82,8 @@
         @endforeach
 
 </div>
-@if(isset($category) && !is_null($category))
+
+@if((isset($category) && !is_null($category)) || isset($title) && !is_null($title))
     <div class="col-xs-12 text-center">
             {{ $items->appends(['sort' => Input::get('sort'), 'custom_name' =>Input::get('custom_name'), 'custom_slug' =>Input::get('custom_slug'), 'custom_town' => Input::get('custom_town'), 'custom_country' => Input::get('custom_country'), 'sort_subcategory' =>Input::get('sort_subcategory')])->render() }}
     </div>
