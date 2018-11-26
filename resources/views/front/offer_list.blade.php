@@ -43,6 +43,10 @@
             <div class="col-xs-12 text-center">
                 <span style="font-size: 28px;">{{ Request::get('custom_name') }}</span>
             </div>
+        @elseif(Request::has('custom_slug'))
+            <div class="col-xs-12 text-center">
+                <span style="font-size: 28px;">{{ Request::get('custom_slug') }}</span>
+            </div>
         @elseif(isset($title) && !is_null($title))
         <div class="col-xs-12 text-center">
             <span style="font-size: 28px;">{{ $title }}</span>

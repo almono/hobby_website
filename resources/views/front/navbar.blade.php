@@ -1,6 +1,15 @@
+<?php
+    $items_pl_kolej = App\Item::where("category_id","1")->where(function ($q) {
+        $q->where('subcategory','Kolej');
+        $q->orWhere('subcategory','Komunikacja miejska');
+    })->groupBy('name')->get();
 
+    $items_other = App\Item::where("category_id","2")->where(function ($q) {
+        $q->where('subcategory','Kolej');
+        $q->orWhere('subcategory','Komunikacja miejska');
+    })->groupBy('name')->get();
+?>
     <div class="container" style="margin-top: 10px; border-radius: 15px">
-
         <div class="row hidden-xs">
             <div class="container col-xs-12" style="padding: 0;">
                 <nav class="navbar navbar-default" style="background-color: inherit; border-radius: 0; margin-bottom: 0px">
@@ -16,13 +25,14 @@
                                 <a class="dropdown-toggle disabled" href="{{ route('home') }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
                                     Strona główna
                                 </a>
-                                <div class="dropdown">
+                                <div class="">
                                     <div class="dropdown">
                                         <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => 1]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
                                             Kalendarzyki polskie
                                             <span class="caret"></span>
                                         </a>
-                                        <ul class="dropdown-menu multidropdown" aria-labelledby="dropdownMenu1">
+
+                                        <ul class="dropdown-menu multidropdown drop-desktop" aria-labelledby="dropdownMenu1">
                                             <li class="dropdown-submenu" hidden>
                                                 <a href="#">Lata<i class="caret"></i></a>
                                                 <ul class="dropdown-menu">
@@ -36,16 +46,26 @@
                                                 <li><a href="{{url('/category/1?sort_subcategory=Kolej')}}">Kolej</a></li>
                                                 <li><a href="{{url('/category/1?sort_subcategory=Miejska')}}">Komunikacja miejska</a></li>
                                             </li>
+                                            @if(isset($items_pl_kolej) && !is_null($items_pl_kolej))
+                                                <li class="dropdown-submenu" style="padding: 5px 0px;">
+                                                    <a href="#">Nazwa emitenta<i class="caret"></i></a>
+                                                    <ul class="dropdown-menu" style="min-width: 360px; max-height: 70vh; overflow-y: scroll;">
+                                                        @foreach($items_pl_kolej as $ip)
+                                                            <li><a href="{{route('show_items', ['category' => $ip->category_id, 'sort' => 'custom-slug', 'custom_slug' => $ip->name ])}}" style="font-size: 12px;">{{ $ip->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="dropdown">
+                                <div class="">
                                     <div class="dropdown">
                                         <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => 2]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
                                             Kalendarzyki zagraniczne
                                             <span class="caret"></span>
                                         </a>
-                                        <ul class="dropdown-menu multidropdown" aria-labelledby="dropdownMenu1">
+                                        <ul class="dropdown-menu multidropdown drop-desktop" aria-labelledby="dropdownMenu1">
                                             <li class="dropdown-submenu" hidden>
                                                 <a href="#">Lata<i class="caret"></i></a>
                                                 <ul class="dropdown-menu">
@@ -59,6 +79,16 @@
                                                 <li><a href="{{url('/category/2?sort_subcategory=Kolej')}}">Kolej</a></li>
                                                 <li><a href="{{url('/category/2?sort_subcategory=Miejska')}}">Komunikacja miejska</a></li>
                                             </li>
+                                            @if(isset($items_other) && !is_null($items_other))
+                                                <li class="dropdown-submenu" style="padding: 5px 0px;">
+                                                    <a href="#">Nazwa emitenta<i class="caret"></i></a>
+                                                    <ul class="dropdown-menu" style="min-width: 360px; max-height: 70vh; overflow-y: scroll;">
+                                                        @foreach($items_other as $ip)
+                                                            <li><a href="{{route('show_items', ['category' => $ip->category_id, 'sort' => 'custom-slug', 'custom_slug' => $ip->name ])}}" style="font-size: 12px;">{{ $ip->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                </li>
+                                            @endif
                                         </ul>
                                     </div>
                                 </div>
