@@ -100,7 +100,7 @@
                                                                     @foreach($names_kolej as $nk)
                                                                         @if($nk->country == $ck->country)
                                                                         <li class="dropdown-submenu" style="padding: 5px 0px;">
-                                                                            <a href="{{url('/category/2?sort=custom-country&sort_subcategory=Kolej&custom_country=' . $ck->country . '&custom_slug=' . $nk->name )}}" style="font-size: 12px; padding-left: 5px;">
+                                                                            <a href="{{url('/category/2?sort=custom-slug&sort_subcategory=Kolej&custom_country=' . $ck->country . '&custom_slug=' . $nk->name )}}" style="font-size: 12px; padding-left: 5px;">
                                                                                 {{ $nk->name }}
                                                                             </a>
                                                                         </li>
@@ -131,7 +131,7 @@
                                                                     @foreach($names_komunikacja as $nk)
                                                                         @if($nk->country == $ck->country)
                                                                             <li class="dropdown-submenu" style="padding: 5px 0px;">
-                                                                                <a href="{{url('/category/2?sort=custom-country&sort_subcategory=Kolej&custom_country=' . $ck->country . '&custom_slug=' . $nk->name)}}" style="font-size: 12px; padding-left: 5px;">
+                                                                                <a href="{{url('/category/2?sort=custom-slug&sort_subcategory=Miejska&custom_country=' . $ck->country . '&custom_slug=' . $nk->name)}}" style="font-size: 12px; padding-left: 5px;">
                                                                                     {{ $nk->name }}
                                                                                 </a>
                                                                             </li>
