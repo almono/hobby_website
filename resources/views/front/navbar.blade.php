@@ -98,11 +98,13 @@
                                                                     <li class="text-center"><a href="#">Nazwa emitenta</a></li>
                                                                     <hr style="margin: 0px;">
                                                                     @foreach($names_kolej as $nk)
+                                                                        @if($nk->country == $ck->country)
                                                                         <li class="dropdown-submenu" style="padding: 5px 0px;">
                                                                             <a href="{{url('/category/2?sort=custom-country&sort_subcategory=Kolej&custom_country=' . $ck->country )}}" style="font-size: 12px; padding-left: 5px;">
                                                                                 {{ $nk->name }}
                                                                             </a>
                                                                         </li>
+                                                                        @endif
                                                                     @endforeach
                                                                 </ul>
                                                             @endif
@@ -127,11 +129,13 @@
                                                                     <li class="text-center"><a href="#">Nazwa emitenta</a></li>
                                                                     <hr style="margin: 0px;">
                                                                     @foreach($names_komunikacja as $nk)
-                                                                        <li class="dropdown-submenu" style="padding: 5px 0px;">
-                                                                            <a href="{{url('/category/2?sort=custom-country&sort_subcategory=Kolej&custom_country=' . $ck->country )}}" style="font-size: 12px; padding-left: 5px;">
-                                                                                {{ $nk->name }}
-                                                                            </a>
-                                                                        </li>
+                                                                        @if($nk->country == $ck->country)
+                                                                            <li class="dropdown-submenu" style="padding: 5px 0px;">
+                                                                                <a href="{{url('/category/2?sort=custom-country&sort_subcategory=Kolej&custom_country=' . $ck->country )}}" style="font-size: 12px; padding-left: 5px;">
+                                                                                    {{ $nk->name }}
+                                                                                </a>
+                                                                            </li>
+                                                                        @endif
                                                                     @endforeach
                                                                 </ul>
                                                             @endif
