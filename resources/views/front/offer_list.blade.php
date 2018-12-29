@@ -41,15 +41,15 @@
     @endif
         @if(Request::has('custom_name'))
             <div class="col-xs-12 text-center">
-                <span style="font-size: 28px;">{{ Request::get('custom_name') }}</span>
+                <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_name')) }}</span>
             </div>
         @elseif(Request::has('custom_slug'))
             <div class="col-xs-12 text-center">
-                <span style="font-size: 28px;">{{ Request::get('custom_slug') }}</span>
+                <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_slug')) }}</span>
             </div>
         @elseif(isset($title) && !is_null($title))
         <div class="col-xs-12 text-center">
-            <span style="font-size: 28px;">{{ $title }}</span>
+            <span style="font-size: 28px;">{{ ucfirst($title) }}</span>
         </div>
         @endif
         @foreach($items as $i)

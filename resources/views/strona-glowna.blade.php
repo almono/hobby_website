@@ -82,14 +82,14 @@
                     <span class="col-xs-12 show_groups_kolej" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kolej</span>
                     <div class="col-xs-12 text-left" id="other_kolej" style="padding-left: 20px;" hidden>
                         @foreach($items_other_groups_kolej as $iko)
-                            <a class="col-xs-12" href="{{route('show_items', ['category' => $iko->category_id, 'custom_slug' => $iko->slug, 'sort' => 'custom-slug' ])}}">{{ $iko->name }}</a>
+                            <a class="col-xs-12" href="{{route('show_items', ['category' => $iko->category_id, 'custom_slug' => $iko->name, 'sort' => 'custom-slug' ])}}">{{ $iko->name }}</a>
                         @endforeach
                     </div>
 
                     <span class="col-xs-12 show_groups_komunikacja" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Komunikacja miejska</span>
                     <div class="col-xs-12 text-left" id="other_komunikacja" style="padding-left: 20px;" hidden>
                         @foreach($items_other_groups_komunikacja as $iku)
-                            <a class="col-xs-12" href="{{route('show_items', ['category' => $iku->category_id, 'custom_slug' => $iku->slug, 'sort' => 'custom-slug' ])}}">{{ $iku->name }}</a>
+                            <a class="col-xs-12" href="{{route('show_items', ['category' => $iku->category_id, 'custom_slug' => $iku->name, 'sort' => 'custom-slug' ])}}">{{ $iku->name }}</a>
                         @endforeach
                     </div>
 
