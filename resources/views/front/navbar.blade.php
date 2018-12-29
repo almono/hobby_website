@@ -153,19 +153,19 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="">
-                                <div class="dropdown">
-                                    <?php $categories = App\Category::where('is_home','1')->where('id','!=','1')->where('id','!=','2')->get(); ?>
-                                    @foreach ($categories as $cat)
+                            <?php $categories = App\Category::where('is_home','1')->where('id','!=','1')->where('id','!=','2')->get(); ?>
+                            @foreach ($categories as $cat)
+                                <div class="">
+                                    <div class="dropdown">
                                         <?php
                                         $countries_other = \App\Item::where("category_id",$cat->id)->where("country","!=","")->groupBy('country')->get();
                                         ?>
                                         @if(isset($countries_other) && !is_null($countries_other) && count($countries_other) > 0)
-                                            <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                                            <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu{{$cat->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
                                                 {{$cat->name}}
                                                 <span class="caret"></span>
                                             </a>
-                                            <ul class="dropdown-menu multidropdown drop-desktop" aria-labelledby="dropdownMenu1">
+                                            <ul class="dropdown-menu multidropdown drop-desktop" aria-labelledby="dropdownMenu{{$cat->id}}">
                                                 <li class="dropdown-submenu">
                                                     <a href="#">Państwo<i class="caret"></i></a>
                                                     <ul class="dropdown-menu">
@@ -176,15 +176,13 @@
                                                 </li>
                                             </ul>
                                         @else
-                                            <li>
-                                                <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
-                                                    {{$cat->name}}
-                                                </a>
-                                            </li>
+                                            <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                                                {{$cat->name}}
+                                            </a>
                                         @endif
-                                    @endforeach
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </ul>
                     </div>
                     <div style="float: right;">
