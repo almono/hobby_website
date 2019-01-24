@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Routing\Route;
 use App\User;
 use App\Item;
 use App\Category;
@@ -111,7 +112,8 @@ class ItemController extends Controller
         $item = Item::where('id',$id)->with('category')->firstOrFail(); //dd(File::exists(storage_path() . "\zdjecia\\" . "test-1000-2.jpg"));
         $item_names = Item::groupBy('name')->select('name')->get();
         $categories = Category::get();
-        return view('front.admin_edit_item',['item' => $item, 'categories' => $categories, 'item_names' => $item_names ]);
+        $previous = url()->previous();
+        return view('front.admin_edit_item',['item' => $item, 'categories' => $categories, 'item_names' => $item_names, 'previous' => $previous ]);
     }
 
     public function update_item(Request $request) {
@@ -143,10 +145,6 @@ class ItemController extends Controller
             $input['zdjecie_tyl']->move(public_path() . "\img\\",$file2);
             $item->img_back = $file2;
         }
-
-
-
-
 
         if (isset($input['new_name']) && $input['new_name'] != '') {
             $item->name = $input['new_name'];
@@ -186,7 +184,13 @@ class ItemController extends Controller
         }
 
         flash()->success('Przedmiot zmodyfikowano pomyślnie!');
-        return redirect()->route('admin_show_items');
+
+        if(isset($input['previous_url']) && !is_null($input['previous_url'])) {
+            return redirect()->to($input['previous_url']);
+        } else {
+            return redirect()->route('admin_show_items');
+        }
+
     }
 
     public function admin_show_items()

@@ -4,6 +4,9 @@
     <div class="col-xs-12"  style="margin-top: 0px; height: 100%; padding-left: 0px; padding-right: 0px;">
         {{ Form::open([ 'method' => 'POST', 'route' => ['update_item', $item->id], 'files' => true]) }}
         {{ Form::hidden('id',$item->id) }}
+        @if(isset($previous) && !is_null($previous))
+            {{ Form::hidden('previous_url',$previous) }}
+        @endif
         <div class="col-xs-12 text-center" style="margin-top: 20px">
             <b style="font-size: 30px; color: antiquewhite">{{$item->name}}</b>
         </div>
