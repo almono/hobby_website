@@ -24,6 +24,17 @@
     <script type="text/javascript" src="{{URL::asset('js/select2.min.js')}}"></script>
 
     <title>Hobby</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133690594-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-133690594-1');
+    </script>
+
 </head>
 <body style="background: #fff4d5;">
 
