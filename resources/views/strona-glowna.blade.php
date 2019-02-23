@@ -1,47 +1,66 @@
 @extends('app')
 @section('content')
 
-<div class="col-xs-12 text-center" style="margin-top: 30px; border-right: 1px solid black; border-left: 1px solid black;">
-    <div class="col-xs-4" style="margin-bottom: 25px; border-bottom: 1px solid black; padding-bottom: 20px; padding-top: 10px; height: 240px;">
+<div class="col-xs-12 text-center flex-column-reverse border-none padding_fix" style="margin-top: 30px; border-right: 1px solid black; border-left: 1px solid black;">
+    <div class="col-xs-12 col-sm-4 main-img hidden-xs" style="margin-bottom: 25px; border-bottom: 1px solid black; padding-bottom: 20px; padding-top: 10px; height: 240px;">
         <img src="{{ asset("img/obrazek_glowna") . ".jpg" }}" style="max-width: 100%;">
     </div>
-    <div class="col-xs-8 text-justify" style="margin-bottom: 25px; border-bottom: 1px solid black; padding-bottom: 20px; padding-top: 10px; height: 240px;">
+    <div class="col-xs-12 col-sm-8 text-justify no-border auto-height padding_fix_mobile" style="margin-bottom: 25px; border-bottom: 1px solid black; padding-bottom: 20px; padding-top: 10px; height: 240px;">
+        <div class="col-xs-12 visible-xs mobile-text-improve text-center" style="font-size: 24px; font-weight: 600; margin-bottom: 25px; border-bottom: 1px solid black; padding-bottom: 20px; padding-top: 10px;">
+            <span>STRONA GŁÓWNA</span>
+        </div>
         <span style="font-weight: 600; font-size: 14px;">Nazywam się Sławek Zaspa i witam wszystkich na mojej stronie, na której będę chciał zaprezentować moją kolekcję kalendarzyków listkowych z tematów kolej i komunikacja zbiorowa miejska i międzymiastowa. Mam nadzieję, że dzięki tej stronie poznam innych kolekcjonerów o podobnych zainteresowaniach, co przyczyni się do powiększenia moich zbiorów. Będę też prezentował inne przedmioty z mojej kolekcji z tej tematyki. Serdecznie zapraszam do zapoznania się z moją kolekcja.
 	        Jeżeli jesteś zainteresowany wymianą lub masz coś co może mnie zainteresować, odezwij się na adres podany w prawym górnym narożniku. Na pewno się porozumiemy.
         </span>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-12 col-sm-4 hidden-xs">
         <?php $i = App\Item::take(3)->orderBy('created_at','DESC')->get(); ?>
-            <div class="col-xs-12" style="margin-bottom: 20px; font-size: 24px;">
+            <div class="col-xs-12 " style="margin-bottom: 20px; font-size: 24px;">
                 Nowości na stronie
             </div>
         @foreach($i as $item)
-            <div class="col-xs-12 item-div item{{$item['id']}}" style="padding: 0px; border: none; padding-top: 0px; margin-top: 0px;">
-                <div class="col-md-12 text-center item-name item-img" style="color: #CEBCED; font-size: 18px; height: 325px; width: 100%; padding: 0px; padding-top: 5px; padding-bottom: 5px;">
-                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');" style="height: 100%;">
-                        <div class="flipper" style="height: 100%;">
-                            <div class="front" style="height: 100%; width: 100%;">
-                                <img class="col-md-12" src="{{ asset("img/$item->img_front")}}" alt="front" @if($item->img_orient_front == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                @if(isset($item->img_front) && !is_null($item->img_front))
+                    @if(isset($item->img_back) && !is_null($item->img_back))
+                        <div class="col-xs-12 col-md-12 item-div item{{$item->id}} padding_fix">
+                            <div class="col-md-12 text-center item-name item-img" style="color: #CEBCED; font-size: 18px; height: 325px; width: 100%; padding: 0px;">
+                                <div class="flip-container" ontouchstart="this.classList.toggle('hover');" style="height: 100%;">
+                                    <div class="flipper" style="height: 100%;">
+                                        <div class="front" style="height: 100%; width: 100%;">
+                                            <img class="col-md-12" src="{{ asset("img/$item->img_front")}}" alt="front" @if($item->img_orient_front == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                                        </div>
+                                        <div class="back" style="height: 100%; width: 100%;">
+                                            <img class="col-md-12" src="{{ asset("img/$item->img_back")}}" alt="front" @if($item->img_orient_back == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="back" style="height: 100%; width: 100%;">
-                                <img class="col-md-12" src="{{ asset("img/$item->img_back")}}" alt="front" @if($item->img_orient_back == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
-                            </div>
+                            @if($title = 'Do wymiany' && Request::path() == 'exchange_items')
+                                <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important; font-weight: 600;">{{$item->id}}</div>
+                            @endif
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important;" hidden>{{$item->name}}</div>
-            </div>
+                    @else
+                        <div class="col-xs-12 col-md-12 padding_fix">
+                            <div class="" style="height: 325px; width: 100%;">
+                                <img class="col-md-12 padding_fix" src="{{ asset("img/$item->img_front")}}" alt="front" @if($item->img_orient_front == 1) style="height: 100%; padding-top: 50px; padding-bottom: 50px;" @else style="height: 100%; padding-left: 50px; padding-right: 50px;" @endif>
+                            </div>
+                            @if($title = 'Do wymiany' && Request::path() == 'exchange_items')
+                                <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important; font-weight: 600;">{{$iitem->id}}</div>
+                            @endif
+                        </div>
+                    @endif
+                @endif
+
         @endforeach
     </div>
-    <div class="col-xs-4" style="height: 100%; border-right: 1px solid black; border-left: 1px solid black; min-height: 1000px;">
-        <div class="col-xs-12" style="margin-bottom: 20px; font-size: 22px;">
-            Kalendarzyki polskie ({{$calendars_pl}})
+    <div class="col-xs-12 col-sm-4 border-none mobile-auto-height padding_fix_mobile" style="height: 100%; border-right: 1px solid black; border-left: 1px solid black; min-height: 1000px;">
+        <div class="col-xs-12 mobile-font-20 padding_fix_mobile mobile-text-improve" style="margin-bottom: 20px; font-size: 22px;">
+            <a href="{{route('show_items', ['category' => 1 ])}}" style="color: #636b6f;">Kalendarzyki polskie ({{$calendars_pl}})</a>
         </div>
-        <div class="col-xs-12" id="polish" style="padding: 0px 0px 10px 0px;">
+        <div class="col-xs-12 font-18" id="polish" style="padding: 0px 0px 10px 0px;">
             <span class="show_polish_kolej col-xs-12 text-left" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kolej</span>
             <span class="show_polish_komunikacja col-xs-12 text-left" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Komunikacja miejska</span>
         </div>
-        <div class="col-xs-12" id="polish_kolej" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
+        <div class="col-xs-12 font-18" id="polish_kolej" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
             <span class="col-xs-12 text-center" style="font-weight: 600; padding-bottom: 10px;">
                 Kolej
             </span>
@@ -53,7 +72,7 @@
                 @endforeach
             @endif
         </div>
-        <div class="col-xs-12" id="polish_komunikacja" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
+        <div class="col-xs-12 font-18" id="polish_komunikacja" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
             <span class="col-xs-12 text-center" style="font-weight: 600; padding-bottom: 10px;">
                 Komunikacja miejska
             </span>
@@ -66,16 +85,16 @@
             @endif
         </div>
     </div>
-    <div class="col-xs-4" style="height: 100%;">
-        <div class="col-xs-12" style="margin-bottom: 20px; font-size: 22px;">
-            Kalendarzyki zagraniczne ({{$calendars_other}})
+    <div class="col-xs-12 col-sm-4 mobile-auto-height padding_fix_mobile" style="height: 100%;">
+        <div class="col-xs-12 mobile-font-20 padding_fix_mobile mobile-text-improve" style="margin-bottom: 20px; font-size: 22px;">
+            <a href="{{route('show_items', ['category' => 2 ])}}" style="color: #636b6f;">Kalendarzyki zagraniczne ({{$calendars_other}})</a>
         </div>
-        <div class="col-xs-12 text-left" style="border-bottom: 1px solid black; padding-bottom: 10px;">
+        <div class="col-xs-12 text-left mobile-p-b-30 font-18" style="border-bottom: 1px solid black; padding-bottom: 10px;">
             <span class="show_groups" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kalendarzyki zagraniczne według grup</span>
             <br>
             <span class="show_countries" style="cursor: pointer; font-weight: 600;"><i class="fa fa-arrow-right"></i>Kalendarzyki zagraniczne według państw</span>
         </div>
-        <div class="col-xs-12" id="groups" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px; padding-left: 0px;" hidden>
+        <div class="col-xs-12 font-18" id="groups" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px; padding-left: 0px;" hidden>
             @if(isset($items_other_groups_kolej) && !is_null($items_other_groups_kolej) && isset($items_other_groups_komunikacja) && !is_null($items_other_groups_komunikacja))
                 <div class="col-xs-12 text-left" style="padding-left: 0px;">
 
@@ -96,7 +115,7 @@
                 </div>
             @endif
         </div>
-        <div class="col-xs-12" id="countries" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
+        <div class="col-xs-12 font-18" id="countries" style="padding-top: 10px; border-bottom: 1px solid black; padding-bottom: 10px;" hidden>
             @if(isset($items_countries) && !is_null($items_countries) && $items_countries != ""  )
                 @foreach($items_countries as $io)
                     <div class="col-xs-12 text-left">
@@ -109,6 +128,29 @@
                 </div>
             @endif
         </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 visible-xs">
+        <?php $i = App\Item::take(3)->orderBy('created_at','DESC')->get(); ?>
+        <div class="col-xs-12 padding_fix_mobile mobile-p-bt-10 mobile-text-improve " style="margin-bottom: 20px; font-size: 24px;">
+            Nowości na stronie
+        </div>
+        @foreach($i as $item)
+            <div class="col-xs-12 item-div item{{$item['id']}}" style="padding: 0px; border: none; padding-top: 0px; margin-top: 0px;">
+                <div class="col-xs-12 col-md-12 text-center item-name item-img" style="color: #CEBCED; font-size: 18px; height: 325px; width: 100%; padding: 0px; padding-top: 5px; padding-bottom: 5px;">
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');" style="height: 100%;">
+                        <div class="flipper" style="height: 100%;">
+                            <div class="front" style="height: 100%; width: 100%;">
+                                <img class="col-xs-12 col-md-12 mobile-p-bt-10" src="{{ asset("img/$item->img_front")}}" alt="front" @if($item->img_orient_front == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                            </div>
+                            <div class="back" style="height: 100%; width: 100%;">
+                                <img class="col-xs-12 col-md-12 mobile-p-bt-10" src="{{ asset("img/$item->img_back")}}" alt="front" @if($item->img_orient_back == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important;" hidden>{{$item->name}}</div>
+            </div>
+        @endforeach
     </div>
 </div>
 @stop

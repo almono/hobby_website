@@ -32,7 +32,7 @@
 </div>
 
 <div class="container" style="position: relative; padding-bottom: 30px; border-radius: 15px; margin-bottom: 30px;">
-    <div class="col-xs-12" style="">
+    <div class="col-xs-12 padding_fix_mobile">
         @yield('content')
     </div>
 </div>

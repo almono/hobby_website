@@ -16,11 +16,12 @@
     $names_komunikacja = App\Item::where("category_id","2")->where("subcategory","Komunikacja miejska")->groupBy('slug')->get();
 
 ?>
-    <div class="container" style="margin-top: 10px; border-radius: 15px">
-        <div class="row hidden-xs">
+    <div class="container mobile-m-0 mobile-p-10" style="margin-top: 10px; border-radius: 15px">
+        <div class="row">
             <div class="container col-xs-12" style="padding: 0;">
                 <nav class="navbar navbar-default" style="background-color: inherit; border-radius: 0; margin-bottom: 0px">
                     <div class="navbar-header">
+                        <a class="navbar-brand visible-xs" href="{{ route('home') }}">Sławek Zaspa - kolekcje</a>
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -28,15 +29,15 @@
                         </button>
                     </div>
                     <div class="collapse navbar-collapse" id="myNavbar" style="float: left">
-                        <ul class="nav navbar-nav navbar" style="display: flex; align-items: center;">
-                            <a class="dropdown-toggle disabled" href="{{ route('home') }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                        <ul class="nav navbar-nav navbar mobile-navbar" style="display: flex; align-items: center;">
+                            <a class="dropdown-toggle disabled mobile-nav-link mobile-nav-main" href="{{ route('home') }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
                                 Strona główna
                             </a>
-                            <div class="">
+                            <div class="mobile-nav-link">
                                 <div class="dropdown">
-                                    <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => 1]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                                    <a class="dropdown-toggle" href="{{ route('show_items', ['category_id' => 1]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer;">
                                         Kalendarzyki polskie
-                                        <span class="caret"></span>
+                                        <span class="caret caret-hide"></span>
                                     </a>
 
                                     <ul class="dropdown-menu multidropdown drop-desktop" aria-labelledby="dropdownMenu1">
@@ -56,7 +57,7 @@
                                         @if(isset($items_pl_kolej) && !is_null($items_pl_kolej))
                                             <li class="dropdown-submenu" style="padding: 5px 0px;">
                                                 <a href="#">Nazwa emitenta<i class="caret"></i></a>
-                                                <ul class="dropdown-menu" style="min-width: 360px; max-height: 70vh; overflow-y: scroll;">
+                                                <ul class="dropdown-menu" style="min-width: 360px; max-height: 35vh; overflow-y: scroll;">
                                                     @foreach($items_pl_kolej as $ip)
                                                         <li><a href="{{route('show_items', ['category' => $ip->category_id, 'sort' => 'custom-slug', 'custom_slug' => $ip->name ])}}" style="font-size: 12px;">{{ $ip->name }}</a></li>
                                                     @endforeach
@@ -66,11 +67,11 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="">
+                            <div class="mobile-nav-link">
                                 <div class="dropdown">
-                                    <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => 2]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                                    <a class="dropdown-toggle" href="{{ route('show_items', ['category_id' => 2]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer;">
                                         Kalendarzyki zagraniczne
-                                        <span class="caret"></span>
+                                        <span class="caret caret-hide"></span>
                                     </a>
                                     <ul class="dropdown-menu multidropdown drop-desktop" aria-labelledby="dropdownMenu1">
                                         <li class="dropdown-submenu" hidden>
@@ -85,16 +86,16 @@
                                         <li class="dropdown-submenu" style="padding: 5px 0px;">
                                             <a href="{{url('/category/2?sort_subcategory=Kolej')}}">Kolej<i class="caret"></i></a>
                                             @if(isset($countries_kolej) && !is_null($countries_kolej) && count($countries_kolej) > 0 )
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu" style="max-height: 35vh;">
                                                     <li class="text-center"><a href="#">Państwo</a></li>
                                                     <hr style="margin: 0px;">
                                                     @foreach($countries_kolej as $ck)
-                                                        <li class="dropdown-submenu" style="padding: 5px 0px;">
+                                                        <li class="dropdown-submenu" style="padding: 0px 0px;">
                                                             <a href="{{url('/category/2?sort=custom-country&sort_subcategory=Kolej&custom_country=' . $ck->country )}}" style="font-size: 12px; padding-left: 5px;">
                                                                 {{ $ck->country }}
                                                             </a>
                                                             @if(isset($names_kolej) && !is_null($names_kolej) && count($names_kolej) > 0 )
-                                                                <ul class="dropdown-menu" style="min-width: 300px; max-width: 500px; max-height: 70vh; overflow-y: scroll;">
+                                                                <ul class="dropdown-menu" style="min-width: 300px; max-width: 500px; max-height: 35vh; overflow-y: scroll;">
                                                                     <li class="text-center"><a href="#">Nazwa emitenta</a></li>
                                                                     <hr style="margin: 0px;">
                                                                     @foreach($names_kolej as $nk)
@@ -114,18 +115,19 @@
                                             @endif
                                         </li>
 
-                                        <li class="dropdown-submenu" style="padding: 5px 0px;"><a href="{{url('/category/2?sort_subcategory=Miejska')}}">Komunikacja miejska<i class="caret"></i></a>
+                                        <li class="dropdown-submenu" style="padding: 5px 0px;">
+                                            <a href="{{url('/category/2?sort_subcategory=Miejska')}}">Komunikacja miejska<i class="caret"></i></a>
                                             @if(isset($countries_komunikacja) && !is_null($countries_komunikacja) && count($countries_komunikacja) > 0 )
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu" style="max-height: 35vh;">
                                                     <li class="text-center"><a href="#">Państwo</a></li>
                                                     <hr style="margin: 0px;">
                                                     @foreach($countries_komunikacja as $ck)
-                                                        <li class="dropdown-submenu" style="padding: 5px 0px;">
+                                                        <li class="dropdown-submenu" style="padding: 0px 0px;">
                                                             <a href="#" style="font-size: 12px;">
                                                                 {{ $ck->country }}
                                                             </a>
                                                             @if(isset($names_komunikacja) && !is_null($names_komunikacja) && count($names_komunikacja) > 0 )
-                                                                <ul class="dropdown-menu" style="min-width: 300px; max-width: 500px; max-height: 70vh; overflow-y: scroll;">
+                                                                <ul class="dropdown-menu" style="min-width: 300px; max-width: 500px; max-height: 35vh; overflow-y: scroll;">
                                                                     <li class="text-center"><a href="#">Nazwa emitenta</a></li>
                                                                     <hr style="margin: 0px;">
                                                                     @foreach($names_komunikacja as $nk)
@@ -147,7 +149,7 @@
                                         @if(isset($items_other) && !is_null($items_other))
                                             <li class="dropdown-submenu" style="padding: 5px 0px;">
                                                 <a href="#">Nazwa emitenta<i class="caret"></i></a>
-                                                <ul class="dropdown-menu" style="min-width: 360px; max-height: 70vh; overflow-y: scroll;">
+                                                <ul class="dropdown-menu" style="min-width: 360px; max-height: 35vh; overflow-y: scroll;">
                                                     @foreach($items_other as $ip)
                                                         <li><a href="{{route('show_items', ['category' => $ip->category_id, 'sort' => 'custom-slug', 'custom_slug' => $ip->name ])}}" style="font-size: 12px;">{{ $ip->name }}</a></li>
                                                     @endforeach
@@ -159,18 +161,18 @@
                             </div>
                             <?php $categories = App\Category::where('is_home','1')->where('id','!=','1')->where('id','!=','2')->get(); ?>
                             @foreach ($categories as $cat)
-                                <div class="">
+                                <div class="mobile-nav-link">
                                     <div class="dropdown">
                                         <?php
                                         $countries_other = \App\Item::where("category_id",$cat->id)->where("country","!=","")->groupBy('country')->get();
                                         ?>
                                         @if(isset($countries_other) && !is_null($countries_other) && count($countries_other) > 0)
-                                            <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu{{$cat->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
+                                            <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu{{$cat->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer;">
                                                 {{$cat->name}}
-                                                <span class="caret"></span>
+                                                <span class="caret caret-hide"></span>
                                             </a>
                                             <ul class="dropdown-menu multidropdown drop-desktop" aria-labelledby="dropdownMenu{{$cat->id}}">
-                                                <li class="dropdown-submenu">
+                                                 <li class="dropdown-submenu">
                                                     <a href="#">Państwo<i class="caret"></i></a>
                                                     <ul class="dropdown-menu">
                                                         @foreach($countries_other as $co)
@@ -187,9 +189,21 @@
                                     </div>
                                 </div>
                             @endforeach
+                            <div class="mobile-nav-link visible-xs">
+                                <a href="{{ route('exchange_items') }}" style="padding: 10px;">Do wymiany</a>
+                            </div>
+                            <div class="mobile-nav-link visible-xs">
+                                <a href="{{ route('new_items') }}" style="padding: 10px;">Nowości</a>
+                            </div>
+                            <div class="mobile-nav-link text-center visible-xs" style="width: 100%;">
+                                <span class="text-center" style="padding: 10px; color: white; font-weight: 600;">
+                                    <span>Kontakt</span><br>
+                                    <span>lukasz_111@gazeta.pl</span>
+                                </span>
+                            </div>
                         </ul>
                     </div>
-                    <div style="float: right;">
+                    <div class="hidden-xs" style="float: right;">
                         <ul class="nav navbar-nav navbar" style="display: flex; align-items: center;">
                             <div class="dropdown">
                                 <a class="dropdown-toggle disabled" href="{{ route('exchange_items') }}" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">

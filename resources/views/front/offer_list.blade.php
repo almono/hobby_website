@@ -5,8 +5,8 @@
     @if(isset($category) && !is_null($category))
         <div class="col-xs-12" style="border: 1px black solid; border-radius: 0px; margin-top: 15px; margin-bottom: 15px; color: #CEBCED; padding-top: 10px; padding-bottom: 10px;">
                 <form action="{{url("category/$category")}}">
-                    <b style="color: black;">Sortowanie:</b>
-                    <select name="sort" id="sort" class="form-control" style="width: 150px; display: inline-block; margin-left: 5px; margin-right: 5px;">
+                    <b style="color: black;" class="col-xs-12 text-left">Sortowanie:</b>
+                    <select name="sort" id="sort" class="col-xs-6 col-md-4 form-control" style="width: 150px; display: inline-block; margin-left: 5px; margin-right: 5px;">
                         <option selected>Wybierz opcje</option>
                         <option value="nazwa-asc">Nazwa A-Z</option>
                         <option value="nazwa-desc">Nazwa Z-A</option>
@@ -22,18 +22,18 @@
                         -->
                         <option value="custom-country">Państwo</option>
                     </select>
-                    <input type="text" class="form-control" name="custom_year" id="custom_year" style="display:none; width: 150px;">
-                    <input type="text" class="form-control" name="custom_name" id="custom_name" style="display:none; width: 150px;">
+                    <input type="text" class="col-xs-6 col-md-4 form-control" name="custom_year" id="custom_year" style="display:none; width: 150px;">
+                    <input type="text" class="col-xs-6 col-md-4 form-control" name="custom_name" id="custom_name" style="display:none; width: 150px;">
                     <!--
                     <input type="text" class="form-control" name="custom_town" id="custom_town" style="display:none; width: 150px;">
                     -->
-                    <input type="text" class="form-control" name="custom_country" id="custom_country" style="display:none; width: 150px;">
+                    <input type="text" class="col-xs-6 col-md-4 form-control" name="custom_country" id="custom_country" style="display:none; width: 150px;">
                     <input type="hidden" name="category_id" value="{{$category}}">
-                    <select name="sort_subcategory" id="sort_subcategory" class="form-control" style="width: 200px; display: inline-block; margin-left: 5px; margin-right: 5px;">
+                    <select name="sort_subcategory" id="sort_subcategory" class="col-xs-12 form-control" style="width: 200px; display: inline-block; margin-left: 5px; margin-right: 5px;">
                         <option value="Kolej">Kolej</option>
                         <option value="Miejska">Komunikacja miejska</option>
                     </select>
-                    <input type="submit" class="btn btn-info" value="Sortuj">
+                    <input type="submit" class="btn btn-info col-xs-12 col-md-2" value="Sortuj">
 
                 </form>
 
@@ -55,30 +55,30 @@
         @foreach($items as $i)
             @if(isset($i->img_front) && !is_null($i->img_front))
                 @if(isset($i->img_back) && !is_null($i->img_back))
-                    <div class="col-md-4 item-div item{{$i->id}}" style="padding: 15px;">
-                        <div class="col-md-12 text-center item-name item-img" style="color: #CEBCED; font-size: 18px; height: 325px; width: 100%; padding: 0px;">
+                    <div class="col-xs-12 col-md-4 item-div item{{$i->id}}" style="padding: 15px;">
+                        <div class="col-xs-12 col-md-12 text-center item-name item-img" style="color: #CEBCED; font-size: 18px; height: 325px; width: 100%; padding: 0px;">
                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" style="height: 100%;">
                                     <div class="flipper" style="height: 100%;">
                                         <div class="front" style="height: 100%; width: 100%;">
-                                            <img class="col-md-12" src="{{ asset("img/$i->img_front")}}" alt="front" @if($i->img_orient_front == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                                            <img class="col-xs-12 col-md-12" src="{{ asset("img/$i->img_front")}}" alt="front" @if($i->img_orient_front == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
                                         </div>
                                         <div class="back" style="height: 100%; width: 100%;">
-                                            <img class="col-md-12" src="{{ asset("img/$i->img_back")}}" alt="front" @if($i->img_orient_back == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                                            <img class="col-xs-12 col-md-12" src="{{ asset("img/$i->img_back")}}" alt="front" @if($i->img_orient_back == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
                                         </div>
                                     </div>
                                 </div>
                         </div>
                         @if($title = 'Do wymiany' && Request::path() == 'exchange_items')
-                            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important; font-weight: 600;">{{$i->id}}</div>
+                            <div class="col-xs-12 col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important; font-weight: 600;">{{$i->id}}</div>
                         @endif
                     </div>
                 @else
-                    <div class="col-md-4" style="padding: 15px;">
+                    <div class="col-xs-12 col-md-4" style="padding: 15px;">
                         <div class="" style="height: 325px; width: 100%;">
-                            <img class="col-md-12" src="{{ asset("img/$i->img_front")}}" alt="front" @if($i->img_orient_front == 1) style="height: 100%; padding-top: 50px; padding-bottom: 50px;" @else style="height: 100%; padding-left: 50px; padding-right: 50px;" @endif>
+                            <img class="col-xs-12 col-md-12" src="{{ asset("img/$i->img_front")}}" alt="front" @if($i->img_orient_front == 1) style="height: 100%; padding-top: 50px; padding-bottom: 50px;" @else style="height: 100%; padding-left: 50px; padding-right: 50px;" @endif>
                         </div>
                         @if($title = 'Do wymiany' && Request::path() == 'exchange_items')
-                            <div class="col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important; font-weight: 600;">{{$i->id}}</div>
+                            <div class="col-xs-12 col-md-12 text-center item-name" id="with-hover" style="color: #303030; font-size: 12px !important; font-weight: 600;">{{$i->id}}</div>
                         @endif
                     </div>
                 @endif

@@ -166,6 +166,7 @@ return [
 		
 		
 		Laracasts\Flash\FlashServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -235,6 +236,7 @@ return [
 		'Form' => Collective\Html\FormFacade::class,
 		'Html' => Collective\Html\HtmlFacade::class,
 		'Input' => Illuminate\Support\Facades\Input::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
 
     ],
 

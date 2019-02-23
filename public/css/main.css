@@ -14,6 +14,11 @@ body {
     padding-left: 0px;
     height: 20px !important;
 }
+
+.dropdown-submenu {
+	background-color: #1c1313;
+}
+
 .links > a {
     color: #636b6f;
     padding: 0 25px;
@@ -335,6 +340,15 @@ input[type=file] {
     color: white !important;
 }
 
+.mobile-nav-link > div > a {
+    padding: 10px;
+}
+
+.padding_fix {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
 @media (max-width: 991px) {
     .navbar-header {
         float: none;
@@ -379,5 +393,86 @@ input[type=file] {
     }
     .item-img {
         height: 150px !important;
+    }
+    .main-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .border-none {
+        border: none !important;
+    }
+    .mobile-m-0 {
+        margin-top: 0px !important;
+    }
+    .mobile-p-10 {
+        padding: 10px;
+    }
+    .mobile-p-bt-10 {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+    .auto-height {
+        height: auto !important;
+    }
+    .padding_fix_mobile {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .mobile-auto-height {
+        min-height: auto !important;
+    }
+    .mobile-font-20 {
+        font-size: 18px !important;
+        font-weight: 600;
+        padding-top: 10px !important;
+    }
+    #myNavbar {
+        height: auto !important;
+        width: 100% !important;
+        padding-right: 0px !important;
+    }
+    .mobile-nav-link {
+        width: 100% !important;
+        padding: 3px !important;
+    }
+    .caret-hide {
+        display: none;
+    }
+    .mobile-navbar {
+        display: block !important;
+        padding-left: 15px !important;
+        padding-right: 0px !important;
+        width: 100% !important;
+        z-index: 10;
+    }
+    .mobile-nav-link {
+        margin: 10px 0px 10px 0px !important;
+    }
+    .mobile-nav-link > div > a {
+        margin: 25px 25px 25px 0px !important;
+    }
+    .mobile-nav-main {
+        padding-left: 10px !important;
+    }
+    .mobile-text-improve {
+        font-weight: 800 !important;
+        font-size: 20px !important;
+        text-decoration: underline !important;
+    }
+    .mobile-p-b-30 {
+        padding-bottom: 30px !important;
+    }
+    .font-18 {
+        font-size: 18px !important;
+    }
+    .front > img {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        height: 100% !important;
+    }
+    .back > img {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
     }
 }
