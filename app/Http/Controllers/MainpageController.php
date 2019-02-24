@@ -68,9 +68,14 @@ class MainpageController extends Controller
             {
                 $path = public_path() . "\\" . $file;
 
-                $source = \Tinify\fromFile($path);
-                $source->toFile($path);
-
+                try {
+                    $source = \Tinify\fromFile($path);
+                    $source->toFile($path);
+                }
+                catch(\Exception $e) {
+                    Log::info("TinyPNG compression error for " . $path);
+                    Log::info($e->getMessage());
+                }
             }
         }
         else {
