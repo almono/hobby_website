@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Item;
 
 class MainpageController extends Controller
@@ -50,6 +51,31 @@ class MainpageController extends Controller
         }
         else {
             flash()->warning("Błąd logowania :( Sprawdź login i hasło");
+        }
+
+        return false;
+    }
+
+    public function minifyImages() {
+
+        $key = env("TINIFY_KEY", NULL);
+        \Tinify\setKey($key);
+
+        if(!is_null($key) && isset($key))
+        {
+            $dir = \File::files('img');
+            foreach($dir as $key => $file)
+            {
+                $path = public_path() . "\\" . $file;
+
+                $source = \Tinify\fromFile($path);
+                $source->toFile($path);
+
+            }
+        }
+        else {
+            Log::info("TinyPNG key error!");
+            dd("There has been a problem with your TinyPNG key!");
         }
     }
 

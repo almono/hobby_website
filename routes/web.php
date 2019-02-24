@@ -21,6 +21,8 @@ Route::get('logout', function() {
     return redirect('home');
 });
 
+Route::get('/minify', ['uses' => 'MainpageController@minifyImages', 'as' => 'minify_images']);
+
 Route::get('/login',['uses' => 'MainpageController@login_form', 'as' => 'login_form']);
 Route::post('/login',['uses' => 'MainpageController@login', 'as' => 'login']);
 
