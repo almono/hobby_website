@@ -1,3 +1,15 @@
+## First Laravel 5.7 project made from scratch
+
+This is a website I made for someone who wanted to show his collection of different items like calendars and other collectibles.
+This is my first Laravel project made from scratch, it uses a very simple CMS in which admin can add,edit and delete items which are displayed on the website.
+
+Database used: MySQL
+PHP version: 7.1
+Some of the APIs used in the project: Tinify, Google Analytics
+
+Front-end: HTML,CSS ( Bootstrap ),Javascript,JQuery, AJAX
+Back-end: Laravel 5.7
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
