@@ -58,6 +58,8 @@ class MainpageController extends Controller
 
     public function minifyImages() {
 
+        dd("STOP");
+        ini_set('max_execution_time', 0); // 0 = Unlimited
         $key = env("TINIFY_KEY", NULL);
         \Tinify\setKey($key);
 
@@ -66,7 +68,7 @@ class MainpageController extends Controller
             $dir = \File::files('img');
             foreach($dir as $key => $file)
             {
-                $path = public_path() . "\\" . $file;
+                $path = public_path() . "/" . $file;
 
                 try {
                     $source = \Tinify\fromFile($path);
@@ -82,6 +84,9 @@ class MainpageController extends Controller
             Log::info("TinyPNG key error!");
             dd("There has been a problem with your TinyPNG key!");
         }
+
+        dd("Compression finished!");
+
     }
 
 }

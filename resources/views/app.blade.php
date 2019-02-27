@@ -11,17 +11,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/select2.min.css') }}">
-
-
-    <script type="text/javascript" src="{{URL::asset('js/jquery-3.2.1.js') }}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/jquery-ui.js') }}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/jquery.sticky.js') }}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/main.js')}}"></script>
-    <script type="text/javascript" src="{{URL::asset('js/select2.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ URL::asset('css/all.css') }}">
+    <script type="text/javascript" src="{{URL::asset('js/all.js')}}"></script>
 
     <title>Hobby</title>
 
@@ -37,6 +28,8 @@
 
 </head>
 <body style="background: #fff4d5;">
+
+<div class="bg-image"></div>
 
 <div class="container-fluid" id="sticky" style="background: linear-gradient(#3e2e06, #251b01 90%); border-radius: 0px; margin-bottom: 15px;border-top: 0px; z-index: 1000;">
     @include('front.navbar')
