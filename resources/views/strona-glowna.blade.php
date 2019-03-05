@@ -1,4 +1,4 @@
-@extends('app')
+@extends('app', ['seo_title' => 'Sławek Zaspa - kolekcje'])
 @section('content')
 
 <div class="col-xs-12 text-center flex-column-reverse border-none padding_fix" style="margin-top: 30px; border-right: 1px solid black; border-left: 1px solid black;">
@@ -7,7 +7,7 @@
     </div>
     <div class="col-xs-12 col-sm-8 text-justify no-border auto-height padding_fix_mobile" style="margin-bottom: 25px; border-bottom: 1px solid black; padding-bottom: 20px; padding-top: 10px; height: 240px;">
         <div class="col-xs-12 visible-xs mobile-text-improve text-center" style="font-size: 24px; font-weight: 600; margin-bottom: 25px; border-bottom: 1px solid black; padding-bottom: 20px; padding-top: 10px;">
-            <span>STRONA GŁÓWNA</span>
+            <h1>STRONA GŁÓWNA</h1>
         </div>
         <span style="font-weight: 600; font-size: 14px;">Nazywam się Sławek Zaspa i witam wszystkich na mojej stronie, na której będę chciał zaprezentować moją kolekcję kalendarzyków listkowych z tematów kolej i komunikacja zbiorowa miejska i międzymiastowa. Mam nadzieję, że dzięki tej stronie poznam innych kolekcjonerów o podobnych zainteresowaniach, co przyczyni się do powiększenia moich zbiorów. Będę też prezentował inne przedmioty z mojej kolekcji z tej tematyki. Serdecznie zapraszam do zapoznania się z moją kolekcja.
 	        Jeżeli jesteś zainteresowany wymianą lub masz coś co może mnie zainteresować, odezwij się na adres podany w prawym górnym narożniku. Na pewno się porozumiemy.

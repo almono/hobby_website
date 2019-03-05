@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::asset('css/all.css') }}">
     <script type="text/javascript" src="{{URL::asset('js/all.js')}}"></script>
-
-    <title>Hobby</title>
+    @if(isset($seo_title) && !is_null($seo_title))
+        <title>{{ $seo_title }}</title>
+    @else
+        <title>Sławek Zaspa - kolekcje</title>
+    @endif
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133690594-1"></script>

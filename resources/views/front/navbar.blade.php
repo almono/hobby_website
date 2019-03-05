@@ -123,7 +123,7 @@
                                                     <hr style="margin: 0px;">
                                                     @foreach($countries_komunikacja as $ck)
                                                         <li class="dropdown-submenu" style="padding: 0px 0px;">
-                                                            <a href="#" style="font-size: 12px;">
+                                                            <a href="{{url('/category/2?sort=custom-country&sort_subcategory=Miejska&custom_country=' . $ck->country )}}" style="font-size: 12px;">
                                                                 {{ $ck->country }}
                                                             </a>
                                                             @if(isset($names_komunikacja) && !is_null($names_komunikacja) && count($names_komunikacja) > 0 )

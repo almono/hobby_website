@@ -1,4 +1,4 @@
-@extends('app')
+@extends('app', ['seo_title' => $seo])
 @section('content')
 
 <div class="col-xs-12 col-md-12" style="padding-top: 20px;">
@@ -49,7 +49,7 @@
             </div>
         @elseif(isset($title) && !is_null($title))
         <div class="col-xs-12 text-center">
-            <span style="font-size: 28px;">{{ ucfirst($title) }}</span>
+            <h1 style="font-size: 28px;">{{ ucfirst($title) }}</h1>
         </div>
         @endif
         @foreach($items as $i)

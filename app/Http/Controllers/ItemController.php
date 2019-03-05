@@ -226,12 +226,21 @@ class ItemController extends Controller
         if(isset($category) && !is_null($category)) {
             $cat = Category::where('id',$category)->first();
             $title = $cat['name'];
+            $seo = 'Sławek Zaspa - ' . $cat['name'];
         }
         else {
             $title = "Kolekcja";
+            $seo = 'Sławek Zaspa - kolekcje';
         }
 
-        return view('front.offer_list',['items' => $items, 'category' => $category, 'title' => $title]);
+        if(isset($this->subcategory) && is_null($this->slug)) {
+            $seo .= ' - ' . $this->subcategory;
+        }
+        if(isset($this->slug)) {
+            $seo .= ' - ' . $this->slug;
+        }
+
+        return view('front.offer_list',['items' => $items, 'category' => $category, 'title' => $title, 'seo' => $seo]);
     }
 
     public function show_items_name($category,$name)
@@ -241,19 +250,29 @@ class ItemController extends Controller
         if(isset($category) && !is_null($category)) {
             $cat = Category::where('id',$category)->first();
             $title = $cat['name'];
+            $seo = 'Sławek Zaspa - ' . $cat['name'];
         }
         else {
             $title = "Kolekcja";
+            $seo = 'Sławek Zaspa - kolekcje';
         }
 
-        return view('front.offer_list',['items' => $items, 'category' => $category, 'title' => $title]);
+        if(isset($this->subcategory) && is_null($this->slug)) {
+            $seo .= ' - ' . $this->subcategory;
+        }
+        if(isset($this->slug)) {
+            $seo .= ' - ' . $this->slug;
+        }
+
+        return view('front.offer_list',['items' => $items, 'category' => $category, 'title' => $title, 'seo' => $seo]);
     }
 
     public function show_new_items()
     {
         $items = Item::orderBy('created_at','DESC')->paginate(18);
+        $seo = 'Sławek Zaspa - nowości';
 
-        return view('front.offer_list',['items' => $items, 'title' => 'Nowości']);
+        return view('front.offer_list',['items' => $items, 'title' => 'Nowości', 'seo' => $seo ]);
     }
 
     public function show_exchange_items(Request $request)
@@ -267,6 +286,8 @@ class ItemController extends Controller
             $items = Item::where('exchange','1')->orderBy('created_at','DESC')->paginate(18);
         }
 
-        return view('front.offer_list',['items' => $items, 'title' => 'Do wymiany']);
+        $seo = 'Sławek Zaspa - przedmioty do wymiany';
+
+        return view('front.offer_list',['items' => $items, 'title' => 'Do wymiany', 'seo' => $seo ]);
     }
 }
