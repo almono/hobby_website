@@ -25,14 +25,23 @@
 <body style="background: black; height: 100%; min-height: 100%;">
 <div class="container-fluid" style="height: 100%;">
 
-        <div class="col-xs-3" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-left: none; border-top: none">
+        <div class="col-xs-3" style="margin-top: 0px; border: gray 1px solid; min-height: 50px; padding-left: 0px; padding-right: 0px; border-left: none; border-top: none">
             <?php $ilosc = App\Item::count();?>
             <b style="color: white;">Ilość wszystkich kalendarzyków: {{$ilosc}}</b>
         </div>
-        <div class="col-xs-9" style="margin-top: 0px; border: gray 1px solid; min-height: 150px; padding-left: 0px; padding-right: 0px; border-top:none; border-right:none">
+        <div class="col-xs-9 text-left" style="position: relative; margin-top: 0px; border: gray 1px solid; min-height: 50px; padding-left: 20px; padding-right: 0px; border-top:none; border-right:none; padding-top: 5px;">
+            <div class="btn btn-primary show-cats" style="margin-top: auto; margin-bottom: auto; position: relative;">
+                Ilości w każdej kategorii
+                <?php $per_kat = App\Category::withCount('items')->get();?>
+                <div id="ilosci_per_kat" class="text-left" style="display: none; position: absolute; top: 100%; left: 0; background-color: black; z-index: 10; border: 1px solid gray; width: 250px; padding: 10px;">
+                    @foreach($per_kat as $pk)
+                        <p style="color: white;">{{ ucfirst($pk->name) }}: <b>{{ $pk->items_count }}</b></p>
+                    @endforeach
+                </div>
+            </div>
 
         </div>
-        <div class="col-xs-3" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-left: none; position: relative;">
+        <div class="col-xs-3" style="margin-top: 0px; border: gray 1px solid; min-height: 800px; padding-left: 0px; padding-right: 0px; border-left: none; position: relative;">
             <div class="col-xs-10 col-xs-offset-1" style="margin-top: 15px">
                 <a href="{{route('admin_new_item')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-plus-sign"></span>Dodaj przedmiot</a>
             </div>
@@ -49,7 +58,7 @@
                 <a href="{{route('logout')}}" class="btn btn-lg" style="width: 100%; border: gray 1px solid"><span class="glyphicon glyphicon-align-justify"></span>Wyloguj</a>
             </div>
         </div>
-        <div class="col-xs-9" style="margin-top: 0px; border: gray 1px solid; min-height: 600px; padding-left: 0px; padding-right: 0px; border-right: none">
+        <div class="col-xs-9" style="margin-top: 0px; border: gray 1px solid; min-height: 800px; padding-left: 0px; padding-right: 0px; border-right: none">
             @yield('admin_content')
         </div>
         <div id="alert" class="col-xs-offset-3 col-xs-6" style="padding-top: 10px; height: 15%; padding-left: 0px; padding-right: 0px; margin-top: 20px;">
@@ -63,4 +72,8 @@
 
 <script>
     $('div.alert').not('.alert-important').delay(1500).fadeOut(350);
+
+    $('.show-cats').on('click', function() {
+        $('#ilosci_per_kat').slideToggle(200);
+    })
 </script>

@@ -31,7 +31,12 @@
                 <input type="submit" class="btn btn-info" value="Sortuj">
             {{ Form::close() }}
         </div>
-        <div id="item_container" class="col-xs-12 text-center" style="margin-top: 20px; overflow-y: scroll; height: 500px;">
+        @if((isset($items)))
+            <div class="col-xs-12 text-center">
+                {{ $items->appends(['sort' => Input::get('sort'), 'custom_name' =>Input::get('custom_name'), 'custom_year' => Input::get('custom_year'), 'custom_country' => Input::get('custom_country'), 'sort_subcategory' =>Input::get('sort_subcategory')])->render() }}
+            </div>
+        @endif
+        <div id="item_container" class="col-xs-12 text-center" style="margin-top: 20px; overflow-y: scroll; height: 600px;">
             @foreach ($items as $item)
                 <div class="col-xs-12 input-group form_margin" style="width: 100%; border: whitesmoke 1px solid;">
                     <b class="col-xs-2 admin-text" style="max-width: 250px;">Zdjecie 1</b>
@@ -49,7 +54,7 @@
                         <span class="col-xs-2 admin-text" style="margin-top: 50px;">{{$item->category->name}}</span>
                         <div class="col-xs-2" style="margin-top: 45px; padding: 0px;">
 
-                            {{ Form::open([ 'method' => 'POST', 'route' => ['edit_item', $item->id], 'style' => 'float: left']) }}
+                            {{ Form::open([ 'method' => 'GET', 'route' => ['edit_item', $item->id], 'style' => 'float: left']) }}
                             {{ Form::submit('Edytuj', ['class' => 'btn btn-info', 'style' => 'width: 100px;']) }}
                             {{ Form::close() }}
 
@@ -61,9 +66,8 @@
                     </div>
                 </div>
             @endforeach
-
+        </div>
     </div>
-</div>
 @stop
 
 

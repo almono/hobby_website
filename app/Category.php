@@ -34,4 +34,9 @@ class Category extends Model
         return $this->belongsTo('App\Item');
     }
 
+    public function items()
+    {
+        return $this->hasMany('App\Item');
+    }
+
 }

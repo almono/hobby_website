@@ -40,7 +40,7 @@ Route::get('/admin/przedmioty_lista', ['uses' => 'ItemController@admin_show_item
 Route::get('/admin/kategorie_lista', ['uses' => 'CategoryController@admin_show_categories', 'as' => 'admin_show_categories']);
 
 Route::post('/admin/usun/{id}', ['uses' => 'ItemController@delete_item', 'as' => 'delete_item']);
-Route::post('/admin/edytuj_przedmiot/{id}', ['uses' => 'ItemController@edit_item', 'as' => 'edit_item']);
+Route::get('/admin/edytuj_przedmiot/{id}', ['uses' => 'ItemController@edit_item', 'as' => 'edit_item']);
 Route::post('/admin/edit_item/{id}', ['uses' => 'ItemController@update_item', 'as' => 'update_item']);
 
 Route::post('/admin/edytuj_kategorie/{id}', ['uses' => 'CategoryController@edit_category', 'as' => 'edit_category']);

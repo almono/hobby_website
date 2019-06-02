@@ -107,9 +107,14 @@ class ItemController extends Controller
 
         return back();
     }
-
+// http://localhost/hobby/public/admin/edytuj_przedmiot/465
+// http://localhost/hobby/public/admin/edytuj_przedmiot/900
     public function edit_item($id) {
-        $item = Item::where('id',$id)->with('category')->firstOrFail(); //dd(File::exists(storage_path() . "\zdjecia\\" . "test-1000-2.jpg"));
+        $item = Item::where('id',$id)->with('category')->first(); //dd(File::exists(storage_path() . "\zdjecia\\" . "test-1000-2.jpg"));
+        if(!$item) {
+            flash()->warning('Nie ma takiego przedmiotu!');
+            return redirect()->route('admin_show_items');
+        }
         $item_names = Item::groupBy('name')->select('name')->get();
         $categories = Category::get();
         $previous = url()->previous();
@@ -195,7 +200,12 @@ class ItemController extends Controller
 
     public function admin_show_items()
     {
-        $items = Item::byFilter($this->sort)->customYear($this->year)->customName($this->name)->customCountry($this->country)->podkategoria($this->subcategory)->orderBy('created_at','DESC')->get();
+        $items = Item::byFilter($this->sort)
+            ->customYear($this->year)
+            ->customName($this->name)
+            ->customCountry($this->country)
+            ->podkategoria($this->subcategory)
+            ->orderBy('created_at','DESC')->paginate(40);
 
         return view('front.admin_view_items',['items' => $items]);
     }
