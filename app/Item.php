@@ -21,6 +21,7 @@ class Item extends Model
         $item->year = $params['rok'];
         $item->category_id = $params['kategoria'];
         $item->subcategory = $params['podkategoria'];
+        $item->is_square = $params['is_square'];
 
         if(isset($params['exchange']) && !is_null($params['exchange']))
         {

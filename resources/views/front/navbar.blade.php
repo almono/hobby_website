@@ -16,7 +16,7 @@
     $names_komunikacja = App\Item::where("category_id","2")->where("subcategory","Komunikacja miejska")->groupBy('slug')->get();
 
 ?>
-    <div class="container mobile-m-0 mobile-p-10" style="margin-top: 10px; border-radius: 15px">
+    <div class="container-fluid mobile-m-0 mobile-p-10" style="margin-top: 10px; border-radius: 15px">
         <div class="row">
             <div class="container col-xs-12" style="padding: 0;">
                 <nav class="navbar navbar-default" style="background-color: inherit; border-radius: 0; margin-bottom: 0px">
@@ -223,7 +223,7 @@
                                 <a href="#">
                                     Kontakt
                                 </a>
-                                <div id="contact-info" class="text-center" style="position: absolute; width: 250px; line-height: 35px; padding: 10px; display: none; left: -50px; background: linear-gradient(#251b01,#3e2e06 90%); z-index: 11;">
+                                <div id="contact-info" class="text-center" style="position: absolute; width: 250px; line-height: 35px; padding: 10px; display: none; right: -15px; background: linear-gradient(#251b01,#3e2e06 90%); z-index: 11;">
                                     <a href="mailto:lukasz_111@gazeta.pl" style="font-weight: 600; color: white;">lukasz_111@gazeta.pl</a>
                                 </div>
                             </li>

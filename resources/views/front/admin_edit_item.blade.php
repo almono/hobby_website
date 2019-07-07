@@ -110,6 +110,10 @@
                     <input type="checkbox" name="exchange" value="1" @if($item->exchange == '1') checked="checked" @endif>
                     <b style="color: white;">Do wymiany</b>
                 </div>
+                <div class="col-xs-12 input-group form_margin" style="width: 100%;">
+                    <input type="checkbox" name="is_square" value="1" @if($item->is_square == '1') checked="checked" @endif>
+                    <b style="color: white;">Kwadratowe zdjęcie</b>
+                </div>
                 <br><br>
                 {{ Form::submit('Zapisz',['class' => 'btn btn-info', 'style' => 'width: 150px;']) }}
             </div>

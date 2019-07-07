@@ -173,6 +173,14 @@ class ItemController extends Controller
             $item->exchange = '0';
         }
 
+        if (isset($input['is_square']) && $input['is_square'] != '') {
+            $item->is_square = '1';
+        }
+        else
+        {
+            $item->is_square = '0';
+        }
+
         $item->category_id = $input['kategoria'];
         $item->subcategory = $input['new_subcat'];
 
@@ -299,5 +307,19 @@ class ItemController extends Controller
         $seo = 'Sławek Zaspa - przedmioty do wymiany';
 
         return view('front.offer_list',['items' => $items, 'title' => 'Do wymiany', 'seo' => $seo ]);
+    }
+
+    public function goToItem(Request $request)
+    {
+        $item_id = Request::input('itemId');
+        $item = Item::find($item_id);
+        if(isset($item_id) && !is_null($item_id) && $item)
+        {
+            return redirect()->route('edit_item', ['id' => $item_id]);
+        } else {
+            flash()->warning('Nie znaleziono takiego przedmiotu');
+            return back();
+        }
+
     }
 }

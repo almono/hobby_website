@@ -48,6 +48,8 @@ Route::post('/admin/edit_category/{id}', ['uses' => 'CategoryController@update_c
 
 Route::post('/admin/update_home_category', ['uses' => 'CategoryController@update_homepage_cat', 'as' => 'update_homepage_cat']);
 
+Route::post('/admin/go_to_item', ['uses' => 'ItemController@goToItem', 'as' => 'goToItem']);
+
 Route::get('/category/{id}', ['uses' => 'ItemController@show_items', 'as' => 'show_items']);
 Route::get('/new_items',['uses' => 'ItemController@show_new_items' , 'as' => 'new_items' ]);
 Route::get('/exchange_items',['uses' => 'ItemController@show_exchange_items' , 'as' => 'exchange_items' ]);

@@ -25,7 +25,7 @@
     </script>
 
 </head>
-<body style="background: #fff4d5;">
+<body style="background: #fff4d5; min-height: 100vh">
 
 <div class="bg-image"></div>
 

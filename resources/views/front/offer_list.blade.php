@@ -41,15 +41,15 @@
     @endif
         @if(Request::has('custom_name'))
             <div class="col-xs-12 text-center">
-                <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_name')) }}</span>
+                <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_name')) }} @if(Request::has('custom_country')) ( {{Request::get('custom_country') }} ) @endif</span>
             </div>
         @elseif(Request::has('custom_slug'))
             <div class="col-xs-12 text-center">
-                <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_slug')) }}</span>
+                <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_slug')) }} @if(Request::has('custom_country')) ( {{Request::get('custom_country') }} ) @endif</span>
             </div>
         @elseif(isset($title) && !is_null($title))
         <div class="col-xs-12 text-center">
-            <h1 style="font-size: 28px;">{{ ucfirst($title) }}</h1>
+            <h1 style="font-size: 28px;">{{ ucfirst($title) }} @if(Request::has('custom_country')) ( {{Request::get('custom_country') }} ) @endif</h1>
         </div>
         @endif
         @foreach($items as $i)
@@ -60,10 +60,10 @@
                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');" style="height: 100%;">
                                     <div class="flipper" style="height: 100%;">
                                         <div class="front" style="height: 100%; width: 100%;">
-                                            <img class="col-xs-12 col-md-12" src="{{ asset("img/$i->img_front")}}" alt="front" @if($i->img_orient_front == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                                            <img class="col-xs-12 col-md-12" src="{{ asset("img/$i->img_front")}}" alt="front" @if($i->img_orient_front == 1 && $i->is_square == 0) style="padding-top: 50px; padding-bottom: 50px;" @elseif( $i->is_square == 0) style="padding-left: 50px; padding-right: 50px;" @endif>
                                         </div>
                                         <div class="back" style="height: 100%; width: 100%;">
-                                            <img class="col-xs-12 col-md-12" src="{{ asset("img/$i->img_back")}}" alt="front" @if($i->img_orient_back == 1) style="padding-top: 50px; padding-bottom: 50px;" @else style="padding-left: 50px; padding-right: 50px;" @endif>
+                                            <img class="col-xs-12 col-md-12" src="{{ asset("img/$i->img_back")}}" alt="front" @if($i->img_orient_back == 1  && $i->is_square == 0) style="padding-top: 50px; padding-bottom: 50px;" @elseif( $i->is_square == 0)  style="padding-left: 50px; padding-right: 50px;" @endif>
                                         </div>
                                     </div>
                                 </div>

@@ -30,16 +30,24 @@
             <b style="color: white;">Ilość wszystkich kalendarzyków: {{$ilosc}}</b>
         </div>
         <div class="col-xs-9 text-left" style="position: relative; margin-top: 0px; border: gray 1px solid; min-height: 50px; padding-left: 20px; padding-right: 0px; border-top:none; border-right:none; padding-top: 5px;">
-            <div class="btn btn-primary show-cats" style="margin-top: auto; margin-bottom: auto; position: relative;">
-                Ilości w każdej kategorii
-                <?php $per_kat = App\Category::withCount('items')->get();?>
-                <div id="ilosci_per_kat" class="text-left" style="display: none; position: absolute; top: 100%; left: 0; background-color: black; z-index: 10; border: 1px solid gray; width: 250px; padding: 10px;">
-                    @foreach($per_kat as $pk)
-                        <p style="color: white;">{{ ucfirst($pk->name) }}: <b>{{ $pk->items_count }}</b></p>
-                    @endforeach
+            <div class="col-xs-3">
+                <div class="btn btn-primary show-cats" style="margin-top: auto; margin-bottom: auto; position: relative;">
+                    Ilości w każdej kategorii
+                    <?php $per_kat = App\Category::withCount('items')->get();?>
+                    <div id="ilosci_per_kat" class="text-left" style="display: none; position: absolute; top: 100%; left: 0; background-color: black; z-index: 10; border: 1px solid gray; width: 250px; padding: 10px;">
+                        @foreach($per_kat as $pk)
+                            <p style="color: white;">{{ ucfirst($pk->name) }}: <b>{{ $pk->items_count }}</b></p>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-
+            <div class="col-xs-9 text-right">
+                <span style="display: inline-block; color: white; font-size: 16px;">Znajdź przy użyciu numeru id:  </span>
+                {{ Form::open([ 'method' => 'post', 'route' => 'goToItem', 'style' => 'display: inline-block;']) }}
+                <input type="text" name="itemId" class="form-control" style="width: 50px; display: inline-block">
+                {{ Form::submit('Szukaj', ['class' => 'btn btn-primary', 'style' => 'width: 80px; display: inline-block;']) }}
+                {{ Form::close() }}
+            </div>
         </div>
         <div class="col-xs-3" style="margin-top: 0px; border: gray 1px solid; min-height: 800px; padding-left: 0px; padding-right: 0px; border-left: none; position: relative;">
             <div class="col-xs-10 col-xs-offset-1" style="margin-top: 15px">
