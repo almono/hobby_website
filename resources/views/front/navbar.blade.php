@@ -9,6 +9,23 @@
         $q->orWhere('subcategory','Komunikacja miejska');
     })->groupBy('name')->get();
 
+    //echo '<pre>';
+    $items_custom = App\Category::where([
+        ['id', '<>', '1'],
+        ['id', '<>', '2'],
+        ['is_home', '=', '1']
+    ])->with('items')->get()->toArray();
+
+    $custom_groups = [];
+
+    foreach($items_custom as $customItem) {
+        foreach($customItem['items'] as $ci) {
+            $custom_groups[$ci['category_id']][$ci['slug']] = $ci['name'];
+        }
+    }
+
+    //echo '<pre>'; print_r($custom_groups); die;
+
     $countries_kolej = App\Item::where("category_id","2")->where("subcategory","Kolej")->where("country","!=","")->groupBy('country')->get();
     $countries_komunikacja = App\Item::where("category_id","2")->where("subcategory","Komunikacja miejska")->where("country","!=","")->groupBy('country')->get();
 
@@ -180,6 +197,20 @@
                                                         @endforeach
                                                     </ul>
                                                 </li>
+                                                @if(isset($custom_groups) && !is_null($custom_groups))
+                                                    <li class="dropdown-submenu" style="padding: 5px 0px;">
+                                                        <a href="#">Nazwa emitenta<i class="caret"></i></a>
+                                                        <ul class="dropdown-menu" style="min-width: 360px; max-height: 35vh; overflow-y: scroll;">
+                                                            @foreach($custom_groups as $group => $values)
+                                                                @if($group == $cat->id)
+                                                                    @foreach($values as $key => $value)
+                                                                        <li><a href="{{route('show_items', ['category' => $cat->id, 'sort' => 'custom-slug', 'custom_slug' => $key ])}}" style="font-size: 12px;">{{ $value }}</a></li>
+                                                                    @endforeach
+                                                                @endif
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
+                                                @endif
                                             </ul>
                                         @else
                                             <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
