@@ -185,7 +185,7 @@
                                         ?>
                                         @if(isset($countries_other) && !is_null($countries_other) && count($countries_other) > 0)
                                             <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu{{$cat->id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer;">
-                                                {{$cat->name}}
+                                                {{ ucfirst($cat->name) }}
                                                 <span class="caret caret-hide"></span>
                                             </a>
                                             <ul class="dropdown-menu multidropdown drop-desktop" aria-labelledby="dropdownMenu{{$cat->id}}">
@@ -214,7 +214,7 @@
                                             </ul>
                                         @else
                                             <a class="dropdown-toggle disabled" href="{{ route('show_items', ['category_id' => $cat->id]) }}" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="cursor: pointer; padding: 10px;">
-                                                {{$cat->name}}
+                                                {{ ucfirst($cat->name) }}
                                             </a>
                                         @endif
                                     </div>
