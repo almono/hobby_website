@@ -44,9 +44,16 @@
                 <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_name')) }} @if(Request::has('custom_country')) ( {{Request::get('custom_country') }} ) @endif</span>
             </div>
         @elseif(Request::has('custom_slug'))
-            <div class="col-xs-12 text-center">
-                <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_slug')) }} @if(Request::has('custom_country')) ( {{Request::get('custom_country') }} ) @endif</span>
-            </div>
+            <?php $catTitle = App\Item::where('slug', Request::get('custom_slug'))->first(); ?>
+            @if(isset($catTitle) && !is_null($catTitle))
+                <div class="col-xs-12 text-center">
+                    <span style="font-size: 28px;">{{ $catTitle['name'] }} @if(Request::has('custom_country')) ( {{Request::get('custom_country') }} ) @endif</span>
+                </div>
+            @else
+                <div class="col-xs-12 text-center">
+                    <span style="font-size: 28px;">{{ ucfirst(Request::get('custom_slug')) }} @if(Request::has('custom_country')) ( {{Request::get('custom_country') }} ) @endif</span>
+                </div>
+            @endif
         @elseif(isset($title) && !is_null($title))
         <div class="col-xs-12 text-center">
             <h1 style="font-size: 28px;">{{ ucfirst($title) }} @if(Request::has('custom_country')) ( {{Request::get('custom_country') }} ) @endif</h1>
